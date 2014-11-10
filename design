@@ -1,3 +1,24 @@
 EECS293 Project 11 Design Document - Shaun Howard (smh150)
 
+Given the assignment document, I have developed the following design for the
+filter system.
+
+
+Filter - which will have generic input and output types
+A filter repeatedly takes an input value and returns an output value.
+
+Scalar Filter - which is a type of Filter
+Identity Filter - which is a type of Scalar Filter with scale 1
+Max Filter N - which is a type of Filter that has a maximum determined by a Comparator
+Max Filter - which is a type of Max Filter N with N as infinity
+Min Filter N - whih is a type of Filter that has a minimum determined by a Comparator
+Min Filter - which is a type of Min Filter N with N as infinity
+Averaging Filter N - which is a type of Scalar Filter that gets the average of input
+Averaging Filter - which is a type of Averaging Filter N with N as infinity
+Scalar Linear Filter - which is a type of Filter
+FIR Filter - which is a type of Scalar Linear Filter
+Gain Filter - which is a type of FIR Filter
+Binomial Filter - which is a type of FIR Filter
+Filter Cascade - which is a type of Filter that takes multiple Filters
+
 
