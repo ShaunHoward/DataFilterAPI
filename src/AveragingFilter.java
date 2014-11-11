@@ -1,5 +1,11 @@
 /**
- * Created by shaun on 11/10/14.
+ * An Averaging Filter is a scalar filter that returns
+ * the average of the input data since the filter was
+ * initialized or last reset.
+ *
+ * @author Shaun Howard
  */
-public class AveragingFilter {
+public class AveragingFilter extends AveragingFilterN {
+
+
 }

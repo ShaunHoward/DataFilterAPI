@@ -1,31 +1,19 @@
 /**
- * Scalar filter class.
+ * Scalar filter interface.
+ * A scalar filter is a filter that maintains a previously calculated double value
+ * and appends an input double value to that value in order to calculate the output
+ * desired for the implementing filter.
  *
  * @author Shaun Howard
  */
-public class ScalarFilter {
-
-    //The value to multiply input with.
-    private double multiplier;
+public interface ScalarFilter {
 
     /**
-     * Constructs a scalar filter from the given multiplier.
-     *
-     * @param multiplier - the filter multiplier
-     */
-    public ScalarFilter(double multiplier){
-        this.multiplier = multiplier;
-    }
-
-    /**
-     * Filters the input value by multiplication with
-     * the filter multiplier.
+     * Filters the input value based on the previous input.
      * Returns the filtered value.
      *
      * @param value - the value to filter
      * @return the filtered value
      */
-    public Double filter(Double value){
-        return value * multiplier;
-    }
+    public double filter(double value);
 }
