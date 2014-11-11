@@ -7,5 +7,8 @@
  */
 public class AveragingFilter extends AveragingFilterN {
 
+    public AveragingFilter(){
+        super(Integer.MAX_VALUE);
+    }
 
 }

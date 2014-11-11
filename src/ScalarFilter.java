@@ -16,4 +16,11 @@ public interface ScalarFilter {
      * @return the filtered value
      */
     public double filter(double value);
+
+    /**
+     * Resets the filter with the input value.
+     *
+     * @param value - the value to reset the filter with
+     */
+    public void reset(double value);
 }

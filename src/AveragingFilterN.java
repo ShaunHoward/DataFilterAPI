@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * An Averaging Filter N is a scalar filter that returns
  * the average of the input data since the last N values
@@ -13,7 +16,14 @@ public class AveragingFilterN implements ScalarFilter {
     // The count of entered values.
     private int count = 0;
 
+    // The count to reset the filter at.
     private int n = 0;
+
+    // Whether the filter has hit it's limit of input tracking.
+    private boolean hitLimit = false;
+
+    // An array of previously input values.
+    private List<Double> prevValues;
 
     /**
      * Constructs an Averaging Filter that resets after N
@@ -24,6 +34,7 @@ public class AveragingFilterN implements ScalarFilter {
      */
     public AveragingFilterN(int n){
         this.n = n;
+        prevValues = new ArrayList<>();
     }
 
     /**
@@ -32,9 +43,37 @@ public class AveragingFilterN implements ScalarFilter {
      * @return
      */
     public double filter(double value){
-        sum += value;
-        count++;
-        return sum / count;
+        if (count >= n && !hitLimit) {
+            hitLimit = true;
+            removeFront();
+        } else if (count >= n){
+            removeFront();
+        }
+        prevValues.add(value);
+        return average();
+    }
+
+    private double average() {
+    }
+
+    /**
+     * Removes the front object from the stored previous values
+     * list.
+     */
+    public void removeFront(){
+        prevValues.remove(0);
+    }
+
+    /**
+     * Resets the filter with the given value.
+     *
+     * @param value - the value to reset the filter with
+     */
+    public void reset(double value){
+        sum = value;
+        count = 0;
+        hitLimit = false;
+        prevValues = new double[n];
     }
 
 
