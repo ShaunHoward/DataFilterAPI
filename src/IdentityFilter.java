@@ -1,5 +1,7 @@
 /**
- * Created by shaun on 11/10/14.
+ * Identity filter class.
+ *
+ * @author Shaun Howard
  */
 public class IdentityFilter<A> {
 

@@ -1,10 +1,18 @@
 /**
- * Created by shaun on 11/10/14.
+ * Scalar filter class.
+ *
+ * @author Shaun Howard
  */
 public class ScalarFilter {
 
+    //The value to multiply input with.
     private double multiplier;
 
+    /**
+     * Constructs a scalar filter from the given multiplier.
+     *
+     * @param multiplier - the filter multiplier
+     */
     public ScalarFilter(double multiplier){
         this.multiplier = multiplier;
     }
