@@ -10,20 +10,11 @@ import java.util.List;
  */
 public class AveragingFilterN implements ScalarFilter {
 
-    // The sum of the previously entered values.
-    private double sum = 0;
-
-    // The count of entered values.
-    private int count = 0;
-
     // The count to reset the filter at.
     private int n = 0;
 
-    // Whether the filter has hit it's limit of input tracking.
-    private boolean hitLimit = false;
-
-    // An array of previously input values.
-    private List<Double> prevValues;
+    // An array of stored input values.
+    private List<Double> values;
 
     /**
      * Constructs an Averaging Filter that resets after N
@@ -34,7 +25,7 @@ public class AveragingFilterN implements ScalarFilter {
      */
     public AveragingFilterN(int n){
         this.n = n;
-        prevValues = new ArrayList<>();
+        values = new ArrayList<>();
     }
 
     /**
@@ -43,25 +34,24 @@ public class AveragingFilterN implements ScalarFilter {
      * @return
      */
     public double filter(double value){
-        if (count >= n && !hitLimit) {
-            hitLimit = true;
-            removeFront();
-        } else if (count >= n){
-            removeFront();
+        if (values.size() >= n) {
+            values.remove(0);
         }
-        prevValues.add(value);
+        values.add(value);
         return average();
     }
 
-    private double average() {
-    }
-
     /**
-     * Removes the front object from the stored previous values
-     * list.
+     * Calculates the average of the stored values.
+     *
+     * @return the average of the stored values
      */
-    public void removeFront(){
-        prevValues.remove(0);
+    private double average() {
+        double sum = 0;
+        for (double value : values){
+            sum += value;
+        }
+        return sum / values.size();
     }
 
     /**
@@ -70,11 +60,6 @@ public class AveragingFilterN implements ScalarFilter {
      * @param value - the value to reset the filter with
      */
     public void reset(double value){
-        sum = value;
-        count = 0;
-        hitLimit = false;
-        prevValues = new double[n];
+        values.clear();
     }
-
-
 }
