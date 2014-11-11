@@ -5,20 +5,43 @@ filter system.
 
 
 Filter - which will have generic input and output types
-A filter repeatedly takes an input value and returns an output value.
+A filter repeatedly takes an input value and returns an output value. A filter also has an optional reset operation that is the
+same type as the input value.
 
 Scalar Filter - which is a type of Filter
+Multiplies the input value by a given scalar value which results in the output value.
+
 Identity Filter - which is a type of Scalar Filter with scale 1
-Max Filter N - which is a type of Filter that has a maximum determined by a Comparator
+This multiplies the input value by a unit scalar which results
+in an output value the same as the input value.
+
+Max Filter N - which is a type of Scalar Filter that has a maximum determined by a Comparator and utilizes reset operation.
+This returns the max value of the last N values (or less if < N
+values are available since the beginning or the last reset).
+
 Max Filter - which is a type of Max Filter N with N as infinity
-Min Filter N - whih is a type of Filter that has a minimum determined by a Comparator
+This returns the max value since the beginning or the last reset,
+whichever occurred most recently.
+
+Min Filter N - which is a type of Scalar Filter that has a minimum determined by a Comparator and utilizes reset operation.
+This returns the min value of the last N values (or less if < N
+values are available since the beginning or the last reset).
+
 Min Filter - which is a type of Min Filter N with N as infinity
-Averaging Filter N - which is a type of Scalar Filter that gets the average of input
+This returns the min value since the beginning or the last reset,
+whichever occurred most recently.
+
+Averaging Filter N - which is a type of Scalar Filter that gets the average of input and utilizes reset operation.
+This returns the average value of the last N values (or less if < N values are available since the beginning or the last reset).
+
 Averaging Filter - which is a type of Averaging Filter N with N as infinity
-Scalar Linear Filter - which is a type of Filter
+This returns the average value since the beginning or the last reset, whichever occurred most recently.
+
+Scalar Linear Filter - which is a type of Filter and utilizes reset operation
 FIR Filter - which is a type of Scalar Linear Filter
 Gain Filter - which is a type of FIR Filter
 Binomial Filter - which is a type of FIR Filter
-Filter Cascade - which is a type of Filter that takes multiple Filters
+Filter Cascade - which is a type of Filter that takes multiple Filters but does not support the reset operation.
+Filters in the filter cascade can, however, be reset individually.
 
 
