@@ -13,16 +13,12 @@ public class AveragingFilter implements ScalarFilter {
     // The count of entered values.
     private int count;
 
-    // Whether the filter has hit it's limit of input tracking.
-    private boolean hitLimit;
-
     /**
      * Constructs an Averaging Filter.
      */
     public AveragingFilter(){
         sum = 0;
         count = 0;
-        hitLimit = false;
     }
 
     /**
@@ -31,6 +27,8 @@ public class AveragingFilter implements ScalarFilter {
      * @return
      */
     public double filter(double value){
+        //check null
+
         sum += value;
         count++;
         return sum / count;
@@ -42,6 +40,8 @@ public class AveragingFilter implements ScalarFilter {
      * @param value - the value to reset the filter with
      */
     public void reset(double value){
+        //check null
+
         sum = value;
         count = 0;
     }

@@ -24,6 +24,8 @@ public class AveragingFilterN implements ScalarFilter {
      *          the filter at
      */
     public AveragingFilterN(int n){
+        //check null
+
         this.n = n;
         values = new ArrayList<>();
     }
@@ -34,6 +36,8 @@ public class AveragingFilterN implements ScalarFilter {
      * @return
      */
     public double filter(double value){
+        //check null
+
         if (values.size() >= n) {
             values.remove(0);
         }
@@ -60,6 +64,8 @@ public class AveragingFilterN implements ScalarFilter {
      * @param value - the value to reset the filter with
      */
     public void reset(double value){
+        //check null
+
         values.clear();
     }
 }

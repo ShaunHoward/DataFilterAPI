@@ -12,6 +12,8 @@ public class IdentityFilter<A> {
      * @return the identity of the value
      */
     public A filter(A value){
+        //check null
+
         return value;
     }
 }
