@@ -13,4 +13,11 @@ public interface Filter<A extends Comparable<A>, B> {
      */
     public B filter(A value);
 
+    /**
+     * Resets the filter with the input value.
+     *
+     * @param value - the value to reset the filter with
+     */
+    public void reset(A value);
+
 }

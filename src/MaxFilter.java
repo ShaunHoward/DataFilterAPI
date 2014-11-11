@@ -24,4 +24,13 @@ public class MaxFilter<A extends Comparable<A>,B> implements Filter<A , B>{
         }
         return (B)max;
     }
+
+    /**
+     * Resets the filter with the specified value.
+     *
+     * @param value - the value to reset the filter with
+     */
+    public void reset(A value){
+        this.max = value;
+    }
 }
