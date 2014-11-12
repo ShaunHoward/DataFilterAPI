@@ -154,4 +154,22 @@ public class ScalarLinearFilter implements ScalarFilter {
         outputSum = dividend / quotient;
     }
 
+    /**
+     * Gets the input boundary coefficient.
+     *
+     * @return the input boundary coefficient
+     */
+    public int getN() {
+        return N;
+    }
+
+    /**
+     * Gets the list of input multipliers.
+     *
+     * @return the list of input multipliers
+     */
+    public List<Double> getB() {
+        return b;
+    }
+
 }

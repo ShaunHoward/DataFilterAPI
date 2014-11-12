@@ -8,13 +8,7 @@ import java.util.List;
  *
  * @author Shaun Howard
  */
-public class AveragingFilterN implements ScalarFilter {
-
-    // The count to reset the filter at.
-    private int n = 0;
-
-    // An array of stored input values.
-    private List<Double> values;
+public class AveragingFilterN extends FilterN<Double> implements ScalarFilter {
 
     /**
      * Constructs an Averaging Filter that resets after N
@@ -25,9 +19,7 @@ public class AveragingFilterN implements ScalarFilter {
      */
     public AveragingFilterN(int n){
         //check null
-
-        this.n = n;
-        values = new ArrayList<>();
+        super(n);
     }
 
     /**
@@ -38,10 +30,8 @@ public class AveragingFilterN implements ScalarFilter {
     public double filter(double value){
         //check null
 
-        if (values.size() >= n) {
-            values.remove(0);
-        }
-        values.add(value);
+        maintainN();
+        getValues().add(value);
         return average();
     }
 
@@ -52,10 +42,10 @@ public class AveragingFilterN implements ScalarFilter {
      */
     private double average() {
         double sum = 0;
-        for (double value : values){
+        for (double value : getValues()){
             sum += value;
         }
-        return sum / values.size();
+        return sum / getValues().size();
     }
 
     /**
@@ -66,7 +56,7 @@ public class AveragingFilterN implements ScalarFilter {
     public void reset(double value){
         //check null
 
-        values.clear();
-        values.add(value);
+        getValues().clear();
+        getValues().add(value);
     }
 }

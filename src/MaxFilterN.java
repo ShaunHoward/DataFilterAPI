@@ -28,7 +28,7 @@ public class MaxFilterN<A extends Comparable<A>,B> extends FilterN<A> implements
     public B filter(A value){
         //check null
         maintainN();
-        values.add(value);
+        getValues().add(value);
         return max();
     }
 
@@ -40,7 +40,7 @@ public class MaxFilterN<A extends Comparable<A>,B> extends FilterN<A> implements
     private B max(){
         A max = null;
         boolean first = true;
-        for (A value : values){
+        for (A value : getValues()){
             if (first){
                 first = false;
                 max = value;

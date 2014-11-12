@@ -8,7 +8,7 @@ import java.util.Collections;
  *
  * @author Shaun Howard
  */
-public class FIRFilter extends ScalarLinearFilter{
+public class FIRFilter extends ScalarLinearFilter {
 
     /**
      * Constructs a scalar linear filter with input boundary coefficient N

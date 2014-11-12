@@ -30,7 +30,7 @@ public class MinFilterN<A extends Comparable<A>,B> extends FilterN<A> implements
     public B filter(A value){
         //check null
         maintainN();
-        values.add(value);
+        getValues().add(value);
         return min();
     }
 
@@ -42,7 +42,7 @@ public class MinFilterN<A extends Comparable<A>,B> extends FilterN<A> implements
     private B min(){
         A min = null;
         boolean first = true;
-        for (A value : values){
+        for (A value : getValues()){
             if (first){
                 first = false;
                 min = value;

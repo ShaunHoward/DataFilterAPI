@@ -1,5 +1,6 @@
 /**
- * Identity filter class.
+ * An Identity Filter returns the value input without
+ * modification.
  *
  * @author Shaun Howard
  */

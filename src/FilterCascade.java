@@ -4,7 +4,7 @@ import java.util.List;
  * Filter Cascade is a cascade of different filters that filter a given
  * input value through the
  */
-public class FilterCascade<A extends Comparable<A>,B> implements Filter<A , B>{
+public class FilterCascade<A extends Comparable<A>,B> implements Filter<A , B> {
 
     // The filters of the filter cascade.
     private List<Filter<A, B>> filters;
@@ -47,6 +47,7 @@ public class FilterCascade<A extends Comparable<A>,B> implements Filter<A , B>{
 
     /**
      * Does nothing in this implementation.
+     *
      * @param value - the value to reset the filter with
      */
     @Override

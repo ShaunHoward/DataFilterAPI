@@ -7,7 +7,7 @@ import java.util.Arrays;
  *
  * @author Shaun Howard
  */
-public class GainFilter extends FIRFilter{
+public class GainFilter extends FIRFilter {
 
     /**
      * Constructs a FIR Filter with input coefficient as 0

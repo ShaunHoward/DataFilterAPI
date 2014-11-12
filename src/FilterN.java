@@ -13,7 +13,7 @@ public abstract class FilterN<A extends Comparable<A>> {
     private int n = 0;
 
     // An array of stored input values.
-    List<A> values;
+    private List<A> values;
 
     /**
      * Constructs a new Filter N that tracks n
@@ -49,5 +49,14 @@ public abstract class FilterN<A extends Comparable<A>> {
 
         values.clear();
         values.add(value);
+    }
+
+    /**
+     * Gets the list of values collected by this filter.
+     *
+     * @return the list of values collected by this filter
+     */
+    public List<A> getValues() {
+        return values;
     }
 }

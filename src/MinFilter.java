@@ -4,7 +4,7 @@
  *
  * @author Shaun Howard
  */
-public class MinFilter<A extends Comparable<A>,B> implements Filter<A , B>{
+public class MinFilter<A extends Comparable<A>,B> implements Filter<A , B> {
 
     // The minimum value found thus far.
     private A min;

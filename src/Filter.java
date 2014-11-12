@@ -1,5 +1,6 @@
 /**
  * A generic filter interface.
+ *
  * The filter can be reset with a given value of type A.
  *
  * @author Shaun Howard
