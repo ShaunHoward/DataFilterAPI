@@ -134,7 +134,8 @@ public class ScalarLinearFilter implements ScalarFilter {
      * Sets the record of previous input value to r.
      * Sets the record of previous output value to
      * r(sum of b(0)-b(N)) / (1 + sum of a(1) - a(M)).
-     * @param r
+     *
+     * @param r - the value to reset the filter with
      */
     @Override
     public void reset(double r) {

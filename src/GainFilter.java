@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * A Gain Filter is a FIR Filter that multiplies only the input by a constant factor,
@@ -9,15 +10,12 @@ import java.util.ArrayList;
 public class GainFilter extends FIRFilter{
 
     /**
-     * Constructs a scalar linear filter with boundary coefficients M and N
-     * and gain multiplier b for output.
-     * The list of multipliers for the input, a, are all initialized to 0.
+     * Constructs a FIR Filter with input coefficient as 0
+     * and b(0) as the gain factor, the only factor in the list.
      *
-     * @param M - the input boundary coefficient
-     * @param N - the output boundary coefficient
-     * @param b - the multiplier list for output
+     * @param b - the gain factor of the filter
      */
-    public GainFilter(int M, int N, ArrayList<Double> b) {
-        super(M, N, b);
+    public GainFilter(double b) {
+        super(0, new ArrayList<Double>(Arrays.asList(b)));
     }
 }
