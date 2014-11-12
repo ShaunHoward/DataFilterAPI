@@ -1,11 +1,7 @@
-/**
- * An Averaging Filter N is a scalar filter that returns
- * the average of the input data since the last N values
- * or the last reset.
- *
- * @author Shaun Howard
- */
-public class AveragingFilterN extends FilterN<Double> implements ScalarFilter {
+An Averaging Filter N is a ScalarFilter that is also
+a child of generic FilterN typed as a Double.
+This filter returns the average of the input data since the last N values
+or the last reset.
 
     /**
      * Constructs an Averaging Filter that resets after N
@@ -15,7 +11,7 @@ public class AveragingFilterN extends FilterN<Double> implements ScalarFilter {
      *          the filter at
      */
     public AveragingFilterN(int n){
-        super(n);
+        call parent's constructor with n
     }
 
     /**
@@ -24,11 +20,10 @@ public class AveragingFilterN extends FilterN<Double> implements ScalarFilter {
      * @return
      */
     public double filter(double value){
-        //check that value is not null.
-
-        maintainN();
-        getValues().add(value);
-        return average();
+        check that double is not null
+        call procedure maintainN
+        add value to list of values
+        return average of values
     }
 
     /**
@@ -37,11 +32,11 @@ public class AveragingFilterN extends FilterN<Double> implements ScalarFilter {
      * @return the average of the stored values
      */
     private double average() {
-        double sum = 0;
-        for (double value : getValues()){
-            sum += value;
-        }
-        return sum / getValues().size();
+        double sum <- 0
+        for each value in list of values
+            sum = sum + value
+
+        return sum / size of values list
     }
 
     /**
@@ -50,9 +45,8 @@ public class AveragingFilterN extends FilterN<Double> implements ScalarFilter {
      * @param value - the value to reset the filter with
      */
     public void reset(double value){
-        //check null
-
-        getValues().clear();
-        getValues().add(value);
+        check that value is not null
+        clear values list
+        add value to the values list
     }
 }

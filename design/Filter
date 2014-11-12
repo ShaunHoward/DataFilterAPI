@@ -1,0 +1,19 @@
+A generic Filter interface with two type parameters, A and B.
+A must extend comparable in order to be compared during filtering.
+The filter can be reset with a given value of type A.
+
+
+    /**
+     * Filters the input value of type A based on the filter type.
+     *
+     * @param value - the value to filter
+     * @return the filtered value of type B
+     */
+    public B filter(A value);
+
+    /**
+     * Resets the filter with the input value.
+     *
+     * @param value - the value to reset the filter with
+     */
+    public void reset(A value);
