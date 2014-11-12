@@ -77,11 +77,18 @@ public class ScalarLinearFilter implements ScalarFilter {
      */
     private double sumInput() {
         //check that b and x are not empty.
+        //check that b has n elements
 
         double sum = 0;
+        IN_SUM_LOOP:
         for (int n = 0; n <= N; n++){
             //sum = sum + b(n) * x(i-n)
-            sum += b.get(n) * x.get(i - n);
+            if ((i - n) >= 0) {
+                sum += b.get(n) * x.get(i - n);
+            } else {
+                //will only add zeroes to sum, so break
+                break IN_SUM_LOOP;
+            }
         }
 
         return sum + inputSum;
@@ -96,11 +103,18 @@ public class ScalarLinearFilter implements ScalarFilter {
      */
     private double sumOutput() {
         //check that a and y are not empty.
+        //check that a has m elements
 
         double sum = 0;
+        OUT_SUM_LOOP:
         for (int m = 1; m <= M; m++){
             //sum = sum + a(m) * y(i-m)
-            sum += a.get(m) * y.get(i - m);
+            if ((i - m) >= 0) {
+                sum += a.get(m) * y.get(i - m);
+            } else {
+                //will only add zeroes to sum, so break
+                break OUT_SUM_LOOP;
+            }
         }
 
         return sum + outputSum;
