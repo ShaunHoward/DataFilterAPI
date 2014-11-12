@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author Shaun Howard
  */
-public class ScalarLinearFilter implements ScalarFilter{
+public class ScalarLinearFilter implements ScalarFilter {
 
     // The input boundary coefficient for the linear equation.
     private int M;
@@ -32,10 +32,10 @@ public class ScalarLinearFilter implements ScalarFilter{
     private List<Double> b;
 
     // The previous input list.
-    private List<Double> input;
+    private List<Double> x;
 
     // The previous output list.
-    private List<Double> output;
+    private List<Double> y;
 
     /**
      * Constructs a scalar linear filter with boundary coefficients M and N
@@ -54,47 +54,80 @@ public class ScalarLinearFilter implements ScalarFilter{
         this.i = 0;
         this.inputSum = 0;
         this.outputSum = 0;
-        input = new ArrayList<>(Collections.nCopies(M, 0.0));
-        output = new ArrayList<>(Collections.nCopies(N, 0.0));
+        x = new ArrayList<>(Collections.nCopies(M, 0.0));
+        y = new ArrayList<>(Collections.nCopies(N, 0.0));
     }
 
     @Override
-    public double filter(double value) {
+    public double filter(double in) {
         //check null
-        input.add(value);
+        x.add(i, in);
         double out = sumInput() - sumOutput();
-        output.add(out);
+        y.add(i, out);
+        i++;
         return out;
     }
 
     /**
      * Calculates the right side of the linear equation.
+     * Sum of b(n) * x(i-n), where n starts at 0 and ends at N
+     * and i is the current iteration of filter input.
      *
      * @return the sum of the input side of the linear equation
      */
     private double sumInput() {
-        //check that
+        //check that b and x are not empty.
 
-        inputSum
+        double sum = 0;
+        for (int n = 0; n <= N; n++){
+            //sum = sum + b(n) * x(i-n)
+            sum += b.get(n) * x.get(i - n);
+        }
 
-
-
-
+        return sum + inputSum;
     }
 
     /**
      * Calculates the left side of the linear equation without adding the
-     * output, yi, of the current iteration i.
+     * output, y(i), of the current iteration i.
+     * Sum of a(m) * y(i-m), where m starts at 1 and ends at M.
      *
      * @return the left side of the linear equation without the output included
      */
     private double sumOutput() {
+        //check that a and y are not empty.
 
+        double sum = 0;
+        for (int m = 1; m <= M; m++){
+            //sum = sum + a(m) * y(i-m)
+            sum += a.get(m) * y.get(i - m);
+        }
+
+        return sum + outputSum;
     }
 
+    /**
+     * Resets the filter with the given value r.
+     * Sets the record of previous input value to r.
+     * Sets the record of previous output value to
+     * r(sum of b(0)-b(N)) / (1 + sum of a(1) - a(M)).
+     * @param r
+     */
     @Override
     public void reset(double r) {
+        double dividend = 0;
+        double quotient = 1;
+        for (int n = 0; n <= N; n++){
+            dividend += b.get(n);
+        }
+        for (int m = 1; m <= M; m++){
+            quotient += a.get(m);
+        }
+
         i = 0;
+        inputSum = r;
+        dividend = r * dividend;
+        outputSum = dividend / quotient;
     }
 
 }
