@@ -10,10 +10,10 @@ import java.util.List;
  */
 public class ScalarLinearFilter implements ScalarFilter {
 
-    // The input boundary coefficient for the linear equation.
+    // The output boundary coefficient for the linear equation.
     private int M;
 
-    // The output boundary coefficient for the linear equation.
+    // The input boundary coefficient for the linear equation.
     private int N;
 
     // The current iteration of the filter.
@@ -25,10 +25,10 @@ public class ScalarLinearFilter implements ScalarFilter {
     // The sum of the output.
     private double outputSum;
 
-    // The input multiplier list.
+    // The output multiplier list.
     private List<Double> a;
 
-    // The output multiplier list.
+    // The input multiplier list.
     private List<Double> b;
 
     // The previous input list.
@@ -38,13 +38,13 @@ public class ScalarLinearFilter implements ScalarFilter {
     private List<Double> y;
 
     /**
-     * Constructs a scalar linear filter with boundary coefficients M and N
+     * Constructs a scalar linear filter with boundary coefficients N and M
      * and lists of multipliers a and b for input and output consecutively.
      *
-     * @param M - the input boundary coefficient
-     * @param N - the output boundary coefficient
-     * @param a - the multiplier list for input
-     * @param b - the multiplier list for output
+     * @param M - the output boundary coefficient
+     * @param N - the input boundary coefficient
+     * @param a - the multiplier list for output
+     * @param b - the multiplier list for input
      */
     public ScalarLinearFilter(int M, int N, ArrayList<Double> a, ArrayList<Double> b){
         this.M = M;
@@ -58,6 +58,15 @@ public class ScalarLinearFilter implements ScalarFilter {
         y = new ArrayList<>(Collections.nCopies(N, 0.0));
     }
 
+    /**
+     * Filters the input by calculating the output at
+     * the current iteration given the linear equation
+     * for the scalar linear filter.
+     *
+     * @param in - the input value to calculate the output in
+     *           relation to
+     * @return the output value y(i) of the linear equation solution
+     */
     @Override
     public double filter(double in) {
         //check null
@@ -69,7 +78,7 @@ public class ScalarLinearFilter implements ScalarFilter {
     }
 
     /**
-     * Calculates the right side of the linear equation.
+     * Calculates the right (input) side of the linear equation.
      * Sum of b(n) * x(i-n), where n starts at 0 and ends at N
      * and i is the current iteration of filter input.
      *
@@ -95,7 +104,7 @@ public class ScalarLinearFilter implements ScalarFilter {
     }
 
     /**
-     * Calculates the left side of the linear equation without adding the
+     * Calculates the left (output) side of the linear equation without adding the
      * output, y(i), of the current iteration i.
      * Sum of a(m) * y(i-m), where m starts at 1 and ends at M.
      *
