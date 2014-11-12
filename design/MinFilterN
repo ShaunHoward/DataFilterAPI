@@ -1,8 +1,6 @@
-MinFilterN is a generic FilterN and Filter that returns the minimum of the
-last N values seen or the minimum value seen since the last
+MinFilterN is a generic FilterN of type A and Filter of type A and B
+that returns the minimum of the last N values seen or the minimum value seen since the last
 reset if less than N values were encountered.
-
-public class MinFilterN<A extends Comparable<A>,B> extends FilterN<A> implements Filter<A,B> {
 
     /**
      * Constructs a Min Filter that resets after N
@@ -47,5 +45,3 @@ public class MinFilterN<A extends Comparable<A>,B> extends FilterN<A> implements
 
         return min as type B
     }
-
-}

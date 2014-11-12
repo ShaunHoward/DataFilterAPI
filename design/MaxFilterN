@@ -45,5 +45,3 @@ reset if less than N values were encountered.
 
         return max as type B
     }
-
-}

@@ -1,7 +1,6 @@
 A generic Filter interface with two type parameters, A and B.
-A must extend comparable in order to be compared during filtering.
+A must extend a comparable class in order to be compared during filtering.
 The filter can be reset with a given value of type A.
-
 
     /**
      * Filters the input value of type A based on the filter type.

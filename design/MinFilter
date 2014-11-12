@@ -29,4 +29,3 @@ in the MinFilter.
     public void reset(A value){
         min <- value
     }
-}

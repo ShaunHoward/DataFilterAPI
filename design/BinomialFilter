@@ -1,0 +1,41 @@
+A Binomial Filter is a FIR Filter where b(i) <- (nCi), where i is the current
+iteration of the input.
+
+    /**
+     * Constructs a scalar linear filter with input boundary coefficient N
+     * and list of multipliers b for input.
+     * The list of multipliers for the output, a, are all initialized to 0.
+     * The boundary coefficient for the output, M, is set to 0 since summation
+     * of output does not take place in a FIR filter.
+     *
+     * @param N - the input boundary coefficient
+     * @param b - the multiplier list for input
+     */
+    public BinomialFilter(int N, ArrayList<Double> b) {
+        call parent's constructor with N <- N, b <- b
+        call procedure setBinomials
+    }
+
+    /**
+     * Sets b(i) to N choose i for each b in the list of
+     * input multipliers where i ranges from 0 to N.
+     */
+    private void setBinomials(){
+        for i <- 0 to N
+            double b <- call function fact with N / call function fact with i * call function fact with N - i
+            set value of list B at index i to value b
+        }
+    }
+
+    /**
+     * Calculates the factorial of the input number.
+     *
+     * @param n - the number to get the factorial of
+     * @return the factorial of n
+     */
+    private int fact(int n){
+        if n = 0
+            return 1
+
+        return n * call fact with n - 1
+    }

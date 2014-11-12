@@ -1,0 +1,12 @@
+A GainFilter is a FIRFilter that multiplies only the input by a constant factor,
+b(0), to get the filtered output.
+
+    /**
+     * Constructs a FIR Filter with input coefficient as 0
+     * and b(0) as the gain factor, the only factor in the list.
+     *
+     * @param b - the gain factor of the filter
+     */
+    public GainFilter(double b) {
+        call parent's constructor with N <- 0, b <- b as an array list
+    }

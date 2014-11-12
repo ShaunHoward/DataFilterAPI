@@ -1,0 +1,49 @@
+A FilterCascade is a generic Filter that is a cascade of different filters
+which filter a given input value through each filter sequentially and
+return the filtered output from the cascade.
+
+    // The filters of the filter cascade.
+    List<Filter<A, B>> filters
+
+    /**
+     * Constructs a filter cascade from generically typed filters.
+     * @param filters - the filters to build the filter cascade with
+     */
+    public FilterCascade(List<Filter<A, B>> filters){
+        this.filters <- filters
+    }
+
+    /**
+     * Filters the input value through the filter cascade.
+     *
+     * @param value - the value to filter
+     * @return the filtered value
+     */
+    public B filter(A value){
+        A output <- value
+
+        for each filter filter in list of filters
+            output <- filter.filter(output) as type A
+
+        return output as type B
+    }
+
+    /**
+     * Resets the selected filter with the given value.
+     *
+     * @param filter - the filter to reset at the given index
+     * @param value - the value to reset the filter with
+     */
+    public void reset(int filter, A value){
+        check that filter and value are not null
+        check 0 <= number < size of filter list
+        reset the filter in the filter list with value
+    }
+
+    /**
+     * Does nothing in this implementation.
+     *
+     * @param value - the value to reset the filter with
+     */
+    public void reset(Comparable value) {
+    }

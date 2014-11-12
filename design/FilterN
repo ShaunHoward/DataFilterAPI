@@ -1,0 +1,52 @@
+A generic Filter N abstract class with one type parameter, A, that must
+extend a comparable class. This filter only considers the last N values input
+to the filter. The filter can be reset with a given value of type A.
+
+    // The count to reset the filter at.
+    int n
+
+    // An array of stored input values.
+    List<A> values
+
+    /**
+     * Constructs a new Filter N that tracks n
+     * previous inputs for filtering.
+     *
+     * @param n - the number of previous inputs tracked
+     */
+    public FilterN(int n){
+        check that n is not null
+        this.n <- n
+        values <- a new array list
+    }
+
+    /**
+     * Removes the front node of the list if
+     * the size of the list is greater than or equal to
+     * n.
+     */
+    void maintainN(){
+        if size of values list >= n
+            remove the front value from list
+
+    }
+
+    /**
+     * Resets the filter with the given value.
+     *
+     * @param value - the value to reset the filter with
+     */
+    public void reset(A value){
+        check that value is not null
+        clear the value list
+        add value to the value list
+    }
+
+    /**
+     * Gets the list of values collected by this filter.
+     *
+     * @return the list of values collected by this filter
+     */
+    public List<A> getValues() {
+        return values
+    }
