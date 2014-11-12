@@ -1,3 +1,5 @@
+import java.lang.reflect.Type;
+
 /**
  * Min Filter N is a min filter that returns the minimum of the
  * last N values seen or the minimum value seen since the last

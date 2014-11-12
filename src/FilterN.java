@@ -15,6 +15,12 @@ public abstract class FilterN<A extends Comparable<A>> {
     // An array of stored input values.
     List<A> values;
 
+    /**
+     * Constructs a new Filter N that tracks n
+     * previous inputs for filtering.
+     *
+     * @param n - the number of previous inputs tracked
+     */
     public FilterN(int n){
         //check null
 
@@ -33,7 +39,11 @@ public abstract class FilterN<A extends Comparable<A>> {
         }
     }
 
-
+    /**
+     * Resets the filter with the given value.
+     *
+     * @param value - the value to reset the filter with
+     */
     public void reset(A value){
         //check null
 
