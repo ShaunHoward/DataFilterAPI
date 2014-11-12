@@ -1,4 +1,4 @@
-An Averaging Filter N is a ScalarFilter that is also
+An AveragingFilterN is a ScalarFilter that is also
 a child of generic FilterN typed as a Double.
 This filter returns the average of the input data since the last N values
 or the last reset.
@@ -20,7 +20,7 @@ or the last reset.
      * @return
      */
     public double filter(double value){
-        check that double is not null
+        check that value is not null
         call procedure maintainN
         add value to list of values
         return average of values
@@ -34,7 +34,7 @@ or the last reset.
     private double average() {
         double sum <- 0
         for each value in list of values
-            sum = sum + value
+            sum <- sum + value
 
         return sum / size of values list
     }
@@ -49,4 +49,3 @@ or the last reset.
         clear values list
         add value to the values list
     }
-}

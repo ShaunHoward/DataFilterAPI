@@ -1,0 +1,32 @@
+A MaxFilter is a generic Filter that filters the input data for the maximum value
+since initialization or the last reset. A comparator is used for comparing values
+in the MaxFilter.
+
+    // The maximum value found thus far.
+    A max;
+
+    /**
+     * Filters the maximum input value since the filter was initialized or
+     * was last reset.
+     *
+     * @param value - the value to filter
+     * @return the maximum seen by the filter thus far as type B
+     */
+    public B filter(A value) {
+        check that value is not null
+
+        if value is greater than max
+            max <- value
+
+        return max as type B
+    }
+
+    /**
+     * Resets the filter with the specified value.
+     *
+     * @param value - the value to reset the filter with
+     */
+    public void reset(A value){
+        max <- value
+    }
+

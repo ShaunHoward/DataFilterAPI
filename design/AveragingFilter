@@ -3,10 +3,10 @@ the average of the input data since the filter was
 initialized or last reset.
 
     // The sum of the previously entered values.
-    private double sum;
+    double sum;
 
     // The count of entered values.
-    private int count;
+    int count;
 
     /**
      * Constructs an Averaging Filter.
@@ -23,8 +23,8 @@ initialized or last reset.
      */
     public double filter(double value){
         check that value is not null
-        sum = sum + value
-        count = count + 1
+        sum <- sum + value
+        count <- count + 1
         return sum / count
     }
 
@@ -38,4 +38,3 @@ initialized or last reset.
         sum <- value
         count <- 0
     }
-}

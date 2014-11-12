@@ -1,10 +1,5 @@
-/**
- * An Identity Filter returns the value input without
- * modification.
- *
- * @author Shaun Howard
- */
-public class IdentityFilter<A> {
+A generic IdentityFilter returns the value input without
+modification.
 
     /**
      * Filters by returning the identity of the input.
@@ -13,8 +8,6 @@ public class IdentityFilter<A> {
      * @return the identity of the value
      */
     public A filter(A value){
-        //check null
-
-        return value;
+        check that value is not null
+        return value
     }
-}

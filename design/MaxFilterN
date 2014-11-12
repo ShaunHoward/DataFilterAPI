@@ -1,0 +1,49 @@
+MaxFilterN is a generic FilterN and Filter that returns the maximum of the
+last N values seen or the maximum value seen since the last
+reset if less than N values were encountered.
+
+    /**
+     * Constructs a Max Filter that resets after N
+     * values are filtered.
+     *
+     * @param n - the number of calls to reset
+     *          the filter at
+     */
+    public MaxFilterN(int n){
+        call parent's constructor with n
+    }
+
+    /**
+     * Filters the input value by returning the maximum
+     * value input of the last N inputs or since the
+     * last reset.
+     * @param value - the value to filter
+     * @return the maximum value yet seen by the filter
+     */
+    public B filter(A value){
+        check that value is not null
+        call procedure maintainN
+        add value to list of values
+        return max of values
+    }
+
+    /**
+     * Returns the maximum element in the list of values.
+     *
+     * @return the max element in the list of values
+     */
+    private B max(){
+        A max <- null
+        boolean first <- true
+        for each value in list of values
+            if first = true
+                first <- false
+                max <- value
+
+            if value is greater than max
+                max <- value
+
+        return max as type B
+    }
+
+}
