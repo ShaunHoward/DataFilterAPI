@@ -3,7 +3,7 @@ import java.util.List;
 
 /**
  * A Filter N abstract class that only considers the last N values input
- * to the filter.
+ * to the filter. The filter can be reset with a given value of type A.
  *
  * @author Shaun Howard
  */

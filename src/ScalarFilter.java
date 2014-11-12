@@ -2,7 +2,8 @@
  * Scalar filter interface.
  * A scalar filter is a filter that maintains a previously calculated double value
  * and appends an input double value to that value in order to calculate the output
- * desired for the implementing filter.
+ * desired for the implementing filter. The filter can be reset with a given value
+ * of type double.
  *
  * @author Shaun Howard
  */
