@@ -67,5 +67,6 @@ public class AveragingFilterN implements ScalarFilter {
         //check null
 
         values.clear();
+        values.add(value);
     }
 }
