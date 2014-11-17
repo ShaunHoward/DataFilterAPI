@@ -27,6 +27,7 @@ public class AveragingFilter implements ScalarFilter {
      * @param value - the value to filter
      * @return the average of the values seen thus far
      */
+    @Override
     public Double filter(Double value){
         //check null
         double primValue = value;
@@ -42,7 +43,11 @@ public class AveragingFilter implements ScalarFilter {
         count = 0;
     }
 
+    /**
+     * Reset method that is not implemented.
+     *
+     * @param value - the value to reset the filter with
+     */
     public void reset(Double value){
-        //not implemented
     }
 }

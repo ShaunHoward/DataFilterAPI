@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 /**
- * A Binomial Filter is a FIR Filter where b(n) = (nCi), where i is the current
- * iteration of the input.
+ * A Binomial Filter is a FIR Filter where b(i) = (nCi), which is the binomial
+ * coefficient at i, where i is the current iteration of the input.
  *
  * @author Shaun Howard
  */
@@ -30,22 +30,22 @@ public class BinomialFilter extends FIRFilter {
      */
     private void setBinomials(){
         for (int i = 0; i <= this.getN(); i++){
-            double b = fact(getN()) / (fact(i) * fact(getN()-i));
+            double b = binomialC(this.getN(), i);
             this.getB().set(i, b);
         }
     }
 
     /**
-     * Calculates the factorial of the input number.
+     * Calculates the binomial coefficient based on the input numbers.
      *
-     * @param n - the number to get the factorial of
-     * @return the factorial of n
+     * @param n - the number to choose from
+     * @param i - the number that can be chosen
+     * @return the binomial coefficient n C i
      */
-    private int fact(int n){
-        if (n == 0){
+    private int binomialC(int n, int i){
+        if (i == 0 || i == n){
             return 1;
         }
-
-        return n * fact(n - 1);
+        return binomialC(n-1, i-1) + binomialC(n-1, i);
     }
 }

@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 /**
  * A Gain Filter is a FIR Filter that multiplies only the input by a constant factor,
- * b(0) to get the output.
+ * b(0), to get the filtered output.
  *
  * @author Shaun Howard
  */

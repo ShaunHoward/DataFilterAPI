@@ -4,7 +4,7 @@
  *
  * @author Shaun Howard
  */
-public class IdentityFilter<A> {
+public class IdentityFilter<A extends Comparable<A>, B> implements Filter<A , B>{
 
     /**
      * Filters by returning the identity of the input.
@@ -12,9 +12,19 @@ public class IdentityFilter<A> {
      * @param value - the value to filter
      * @return the identity of the value
      */
-    public A filter(A value){
+    @Override
+    public B filter(A value){
         //check null
 
-        return value;
+        return (B)value;
+    }
+
+    /**
+     *
+     * @param value - the value to reset the filter with
+     */
+    @Override
+    public void reset(A value) {
+
     }
 }

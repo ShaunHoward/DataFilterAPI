@@ -68,13 +68,18 @@ public class ScalarLinearFilter implements ScalarFilter {
      * @return the output value y(i) of the linear equation solution
      */
     @Override
-    public double filter(double in) {
+    public Double filter(Double in) {
         //check null
         x.add(i, in);
         double out = sumInput() - sumOutput();
         y.add(i, out);
         i++;
         return out;
+    }
+
+    @Override
+    public void reset() {
+        //not implemented
     }
 
     /**
@@ -138,7 +143,7 @@ public class ScalarLinearFilter implements ScalarFilter {
      * @param r - the value to reset the filter with
      */
     @Override
-    public void reset(double r) {
+    public void reset(Double r) {
         double dividend = 0;
         double quotient = 1;
         for (int n = 0; n <= N; n++){

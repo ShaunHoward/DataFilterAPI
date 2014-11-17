@@ -23,7 +23,7 @@ public class AveragingFilterN extends FilterN<Double> implements ScalarFilter {
      * @param value - the value to filter
      * @return
      */
-    public double filter(double value){
+    public Double filter(Double value){
         //check that value is not null.
 
         maintainN();
@@ -43,16 +43,23 @@ public class AveragingFilterN extends FilterN<Double> implements ScalarFilter {
         }
         return sum / getValues().size();
     }
+//
+//    /**
+//     * Resets the filter with the given value.
+//     *
+//     * @param value - the value to reset the filter with
+//     */
+//    public void reset(double value){
+//        //check null
+//
+//
+//    }
 
     /**
-     * Resets the filter with the given value.
-     *
-     * @param value - the value to reset the filter with
+     * Resets the filter by clearing the values list.
      */
-    public void reset(double value){
-        //check null
-
+    @Override
+    public void reset() {
         getValues().clear();
-        getValues().add(value);
     }
 }
