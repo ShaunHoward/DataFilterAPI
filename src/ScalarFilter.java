@@ -8,7 +8,7 @@
  *
  * @author Shaun Howard
  */
-public interface ScalarFilter {
+public interface ScalarFilter extends Filter<Double, Double> {
 
     /**
      * Filters the input value based on the previous input.
@@ -17,12 +17,10 @@ public interface ScalarFilter {
      * @param value - the value to filter
      * @return the filtered value
      */
-    public double filter(double value);
+    public Double filter(Double value);
 
     /**
-     * Resets the filter with the input value.
-     *
-     * @param value - the value to reset the filter with
+     * Resets the filter with 0.0.
      */
-    public void reset(double value);
+    public void reset();
 }

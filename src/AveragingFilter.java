@@ -7,8 +7,8 @@
  */
 public class AveragingFilter implements ScalarFilter {
 
-    // The sum of the previously entered values.
-    private double sum;
+    // The average of previously entered values.
+    private double baseAverage;
 
     // The count of entered values.
     private int count;
@@ -17,32 +17,32 @@ public class AveragingFilter implements ScalarFilter {
      * Constructs an Averaging Filter.
      */
     public AveragingFilter(){
-        sum = 0;
+        baseAverage = 0;
         count = 0;
     }
 
     /**
      * Calculates the average of the data entered thus far
+     *
      * @param value - the value to filter
-     * @return
+     * @return the average of the values seen thus far
      */
-    public double filter(double value){
+    public Double filter(Double value){
         //check null
-
-        sum += value;
-        count++;
-        return sum / count;
+        double primValue = value;
+        baseAverage = ((baseAverage * count) + primValue) / ++count;
+        return baseAverage;
     }
 
     /**
-     * Resets the filter with the given value.
-     *
-     * @param value - the value to reset the filter with
+     * Resets the filter with by setting sum and count to 0.
      */
-    public void reset(double value){
-        //check null
-
-        sum = value;
+    public void reset(){
+        baseAverage = 0.0;
         count = 0;
+    }
+
+    public void reset(Double value){
+        //not implemented
     }
 }
