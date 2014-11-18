@@ -3,8 +3,10 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Scalar Linear Filter that filters input based on a linear equation
- * and previous inputs. The filter can be reset with a given value.
+ * ScalarLinearFilter which is a ScalarFilter that filters input based on a linear
+ * equation (y(i) + a(1)y(i-1)+...+a(M)y(i-M) = b(0)x(i)+...+b(N)x(i-N)) which
+ * considers the current iteration of input, previous input values and the current
+ * input value. The filter can be reset with a given double value.
  *
  * @author Shaun Howard
  */

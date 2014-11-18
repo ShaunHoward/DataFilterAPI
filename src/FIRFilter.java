@@ -21,6 +21,6 @@ public class FIRFilter extends ScalarLinearFilter {
      * @param b - the multiplier list for input
      */
     public FIRFilter(int N, ArrayList<Double> b) {
-        super(0, N, new ArrayList<>(Collections.nCopies(1, 0.0)), b);
+        super(0, N, new ArrayList<>(Collections.nCopies(2, 0.0)), b);
     }
 }

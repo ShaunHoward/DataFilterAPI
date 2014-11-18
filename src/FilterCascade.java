@@ -1,8 +1,13 @@
 import java.util.List;
 
 /**
- * Filter Cascade is a cascade of different filters that filter a given
- * input value through the
+ * A FilterCascade is a generic Filter of types A and B that is a cascade of different
+ * filters of types A and B which filter a given input value through each filter
+ * sequentially and return the filtered output from the cascade as type B. A
+ * FilterCascade is constructed with a list of Filters of type A and B. Filters in the
+ * filter cascade can only be reset individually but not as a whole.
+ *
+ * @author Shaun Howard
  */
 public class FilterCascade<A extends Comparable<A>,B> implements Filter<A , B> {
 
@@ -46,7 +51,7 @@ public class FilterCascade<A extends Comparable<A>,B> implements Filter<A , B> {
     }
 
     /**
-     * Does nothing in this implementation.
+     * Reset that is not implemented.
      *
      * @param value - the value to reset the filter with
      */
