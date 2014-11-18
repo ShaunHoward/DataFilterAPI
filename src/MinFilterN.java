@@ -25,6 +25,7 @@ public class MinFilterN<A extends Comparable<A>,B> extends FilterN<A> implements
      * @param value - the value to filter
      * @return the minimum value yet seen by the filter
      */
+    @Override
     public B filter(A value){
         //check null
         maintainN();

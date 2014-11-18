@@ -16,6 +16,7 @@ public class MinFilter<A extends Comparable<A>,B> implements Filter<A , B> {
      * @param value - the value to filter
      * @return the minimum seen by the filter thus far as type B
      */
+    @Override
     public B filter(A value) {
         //Check null
 
@@ -30,6 +31,7 @@ public class MinFilter<A extends Comparable<A>,B> implements Filter<A , B> {
      *
      * @param value - the value to reset the filter with
      */
+    @Override
     public void reset(A value){
         this.min = value;
     }

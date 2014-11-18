@@ -59,4 +59,13 @@ public abstract class FilterN<A extends Comparable<A>> {
     public List<A> getValues() {
         return values;
     }
+
+    /**
+     * Gets the count of values to accept.
+     *
+     * @return the count of values to accept
+     */
+    public int getN(){
+        return this.n;
+    }
 }

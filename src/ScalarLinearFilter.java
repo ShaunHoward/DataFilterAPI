@@ -79,9 +79,12 @@ public class ScalarLinearFilter implements ScalarFilter {
         return out;
     }
 
+    /**
+     * Resets the filter with 0.0.
+     */
     @Override
     public void reset() {
-        //not implemented
+        reset(0.0);
     }
 
     /**
