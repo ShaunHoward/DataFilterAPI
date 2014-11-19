@@ -1,5 +1,7 @@
 package filter;
 
+import exception.EmptyListException;
+import exception.IncorrectSizeException;
 import exception.NullValueException;
 
 /**
@@ -29,9 +31,11 @@ public class MaxFilterN<A extends Comparable<A>,B> extends FilterN<A> implements
      * @param value - the value to filter
      * @return the maximum value yet seen by the filter
      * @throws exception.NullValueException - thrown when the input value is null
+     * @throws exception.EmptyListException - thrown when the list of values is null
+     * @throws exception.IncorrectSizeException - thrown when n is negative
      */
     @Override
-    public B filter(A value) throws NullValueException {
+    public B filter(A value) throws NullValueException, EmptyListException, IncorrectSizeException {
         FilterValidator.throwExceptionWhenNull(value);
         maintainN();
         getValues().add(value);

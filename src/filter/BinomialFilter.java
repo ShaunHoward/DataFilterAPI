@@ -32,13 +32,9 @@ public class BinomialFilter extends FIRFilter {
      * input multipliers where i ranges from 0 to N.
      */
     private void setBinomials(){
-        try {
-            for (int i = 0; i <= this.getN(); i++){
-                double b = binomialC(this.getN(), i);
-                this.getB().set(i, b);
-            }
-        } catch (NullValueException nve) {
-            System.err.println("N was null when setting binomial coefficients.");
+        for (int i = 0; i <= this.getN(); i++){
+            double b = binomialC(this.getN(), i);
+            this.getB().set(i, b);
         }
     }
 

@@ -74,11 +74,11 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
      * @param in - the input value to calculate the output in
      *           relation to
      * @return the output value y(i) of the linear equation solution
-     * @throws exception.NullValueException - thrown when the input value is null
+     * @throws exception.NullValueException - thrown when the input, a, or b is null
      */
     @Override
     public Double filter(Double in) throws NullValueException, EmptyListException, IncorrectSizeException {
-        FilterValidator.throwExceptionWhenNull(in, M, N, a, b);
+        FilterValidator.throwExceptionWhenNull(in, a, b);
         x.add(i, in);
         double out = sumInput() - sumOutput();
         y.add(i, out);
@@ -162,11 +162,11 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
      *
      * @param r - the value to reset the filter with
      * @throws exception.NullValueException - thrown when any value used in
-     * resetting filter is null (r, N, b, M, a)
+     * resetting filter is null (r, b, a)
      */
     @Override
     public void reset(Double r) throws NullValueException {
-        FilterValidator.throwExceptionWhenNull(r, N, b, M, a);
+        FilterValidator.throwExceptionWhenNull(r, b, a);
         double dividend = 0;
         double quotient = 1;
         for (int n = 0; n <= N; n++){
@@ -185,10 +185,8 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
      * Gets the input boundary coefficient.
      *
      * @return the input boundary coefficient
-     * @throws exception.NullValueException - thrown when N is null
      */
-    public int getN() throws NullValueException {
-        FilterValidator.throwExceptionWhenNull(N);
+    public int getN() {
         return N;
     }
 

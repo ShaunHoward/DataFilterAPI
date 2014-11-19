@@ -1,6 +1,7 @@
 package test;
 
-import org.junit.Test; 
+import exception.NullValueException;
+import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
 import filter.AveragingFilter;
@@ -21,11 +22,7 @@ public class AveragingFilterTest {
 @Before
 public void before() throws Exception {
     avgFilter = new AveragingFilter();
-} 
-
-@After
-public void after() throws Exception { 
-} 
+}
 
 /** 
 * 
@@ -57,10 +54,10 @@ public void testFilterGoodData() throws Exception {
     /**
      *
      * Method: filter(Double value)
-     * Structured Basis
+     * Bad data
      *
      */
-//    @Test (expected=I)
+    @Test (expected= NullValueException.class)
     public void testFilterBadData() throws Exception {
         avgFilter.filter(null);
     }
@@ -80,17 +77,5 @@ public void testReset() throws Exception {
     avgFilter.reset();
     assertEquals(0.0, avgFilter.getBaseAverage(), 0.01);
     assertEquals(0, avgFilter.getCount());
-} 
-
-/** 
-* 
-* Method: reset(Double value) 
-* 
-*/ 
-@Test
-public void testResetValue() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-
+}
 } 

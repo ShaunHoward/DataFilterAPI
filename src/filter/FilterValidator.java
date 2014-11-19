@@ -21,9 +21,9 @@ public class FilterValidator {
      * objects are null
      */
     public static void throwExceptionWhenNull(Object... objs) throws NullValueException {
-        for (Object obj : objs){
-            if (obj == null){
-                throw new NullValueException("The object: " + obj.toString() + " is null.");
+        for (Object obj : objs) {
+            if (obj == null) {
+                throw new NullValueException("An object is null.");
             }
         }
     }

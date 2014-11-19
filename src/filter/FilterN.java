@@ -1,5 +1,7 @@
 package filter;
 
+import exception.EmptyListException;
+import exception.IncorrectSizeException;
 import exception.NullValueException;
 
 import java.util.ArrayList;
@@ -34,11 +36,12 @@ public abstract class FilterN<A extends Comparable<A>> {
      * Removes the front node of the list if
      * the size of the list is greater than or equal to
      * n.
-     * @throws exception.NullValueException - thrown when the value n is null
+     * @throws exception.EmptyListException - thrown when values list is empty
+     * @throws exception.IncorrectSizeException - thrown when n is negative
      */
-    void maintainN() throws NullValueException {
-        FilterValidator.throwExceptionWhenNull(n);
-        if (values.size() >= n) {
+    void maintainN() throws EmptyListException, IncorrectSizeException {
+        if (values.size() >= getN()) {
+            FilterValidator.throwExceptionWhenEmpty(values);
             values.remove(0);
         }
     }
@@ -56,10 +59,10 @@ public abstract class FilterN<A extends Comparable<A>> {
      * Gets the count of values to accept.
      *
      * @return the count of values to accept
-     * @throws exception.NullValueException - thrown when n is null
+     * @throws exception.IncorrectSizeException - thrown when n is negative
      */
-    public int getN() throws NullValueException {
-        FilterValidator.throwExceptionWhenNull(n);
+    public int getN() throws IncorrectSizeException {
+        FilterValidator.throwWhenOutOfRange(n, 0, Integer.MAX_VALUE);
         return n;
     }
 }

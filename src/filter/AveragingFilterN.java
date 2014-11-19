@@ -1,5 +1,7 @@
 package filter;
 
+import exception.EmptyListException;
+import exception.IncorrectSizeException;
 import exception.NullValueException;
 
 /**
@@ -31,9 +33,10 @@ public class AveragingFilterN extends FilterN<Double> implements ScalarFilter {
      * @param value - the value to filter
      * @return the average of the last N values or since the last reset
      * @throws exception.NullValueException - thrown when the input value is null
+     * @throws exception.IncorrectSizeException - thrown when n is negative
      */
     @Override
-    public Double filter(Double value) throws NullValueException {
+    public Double filter(Double value) throws NullValueException, EmptyListException, IncorrectSizeException {
         FilterValidator.throwExceptionWhenNull(value);
         maintainN();
         getValues().add(value);
@@ -45,11 +48,13 @@ public class AveragingFilterN extends FilterN<Double> implements ScalarFilter {
      * the size of the list is greater than or equal to
      * n. Then recalculates the base average of the numbers
      * seen thus far (N-1).
-     * @throws exception.NullValueException - thrown when N is null
+     * @throws exception.EmptyListException - thrown when the list of values is empty
+     * @throws exception.IncorrectSizeException - thrown when n is negative
      */
     @Override
-    public void maintainN() throws NullValueException {
+    public void maintainN() throws EmptyListException, IncorrectSizeException {
         if (getValues().size() >= getN()) {
+            FilterValidator.throwExceptionWhenEmpty(getValues());
             double firstValue = getValues().get(0);
             int count = getValues().size();
             getValues().remove(0);
