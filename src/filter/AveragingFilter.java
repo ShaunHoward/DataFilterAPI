@@ -26,7 +26,7 @@ public class AveragingFilter implements ScalarFilter {
     }
 
     /**
-     * Calculates the average of the data entered thus far
+     * Calculates the average of the data entered thus far.
      *
      * @param value - the value to filter
      * @return the average of the values seen thus far

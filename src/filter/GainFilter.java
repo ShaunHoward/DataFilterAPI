@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class GainFilter extends FIRFilter {
 
     /**
-     * Constructs a FIR Filter with input coefficient as 0
+     * Constructs a FIR Filter with input coefficient as 1
      * and b(0) as the gain factor, the only factor in the list.
      *
      * @param b - the gain factor of the filter

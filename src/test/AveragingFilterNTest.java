@@ -35,10 +35,6 @@ public class AveragingFilterNTest {
         avgFilterPositiveBoundary = new AveragingFilterN(LARGE_SIZE);
     }
 
-    @After
-    public void after() throws Exception {
-    }
-
     /**
      * Method: filter(Double value)
      * Structured Basis

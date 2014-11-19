@@ -33,6 +33,7 @@ public class AveragingFilterN extends FilterN<Double> implements ScalarFilter {
      * @param value - the value to filter
      * @return the average of the last N values or since the last reset
      * @throws exception.NullValueException - thrown when the input value is null
+     * @throws exception.EmptyListException - thrown when any used lists are empty
      * @throws exception.IncorrectSizeException - thrown when n is negative
      */
     @Override

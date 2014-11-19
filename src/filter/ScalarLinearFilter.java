@@ -136,10 +136,9 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
      * Sum of a(m) * y(i-m), where m starts at 1 and ends at M.
      *
      * @return the left side of the linear equation without the output included
-     * @throws exception.EmptyListException - thrown when lists a or y are empty
      * @throws exception.IncorrectSizeException - thrown when the size of a is not M
      */
-    private double sumOutput() throws EmptyListException, IncorrectSizeException {
+    private double sumOutput() throws IncorrectSizeException {
 //        FilterValidator.throwExceptionWhenEmpty(a, y);
         FilterValidator.throwIncorrectSizeException(a, M);
 
