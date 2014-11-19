@@ -44,18 +44,6 @@ public abstract class FilterN<A extends Comparable<A>> {
     }
 
     /**
-     * Resets the filter with the given value.
-     *
-     * @param value - the value to reset the filter with
-     * @throws exception.NullValueException - thrown when the input value is null
-     */
-    public void reset(A value) throws NullValueException {
-        FilterValidator.throwExceptionWhenNull(value);
-        values.clear();
-        values.add(value);
-    }
-
-    /**
      * Gets the list of values collected by this filter.
      *
      * @return the list of values collected by this filter

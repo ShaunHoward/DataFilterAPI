@@ -46,30 +46,4 @@ public class FilterCascade<A extends Comparable<A>,B> implements Filter<A , B> {
         }
         return (B)output;
     }
-
-    /**
-     * Resets the selected filter with the given value.
-     *
-     * @param filter - the filter to reset at the given index
-     * @param value - the value to reset the filter with
-     * @throws exception.NullValueException - thrown when either of the input
-     * values are null
-     * @throws exception.IncorrectSizeException - thrown when the input filter to reset
-     * is out of the range of possible filters to reset
-     */
-    public void reset(int filter, A value) throws NullValueException, IncorrectSizeException {
-        FilterValidator.throwExceptionWhenNull(new Integer(filter));
-        FilterValidator.throwWhenOutOfRange(filter, 0, filters.size());
-        filters.get(filter).reset(value);
-    }
-
-    /**
-     * Reset that is not implemented.
-     *
-     * @param value - the value to reset the filter with
-     */
-    @Override
-    public void reset(Comparable value) {
-    }
-
 }

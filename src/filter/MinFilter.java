@@ -8,7 +8,7 @@ import exception.NullValueException;
  *
  * @author Shaun Howard
  */
-public class MinFilter<A extends Comparable<A>,B> implements Filter<A , B> {
+public class MinFilter<A extends Comparable<A>,B> implements Filter<A , B>, Resettable<A> {
 
     // The minimum value found thus far.
     private A min;

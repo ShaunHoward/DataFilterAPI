@@ -42,7 +42,6 @@ public class FilterValidator {
         }
     }
 
-
     /**
      * Throws an exception when the size of the input list does not match the input size.
      *

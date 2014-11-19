@@ -80,14 +80,6 @@ public void testReset() throws Exception {
     avgFilter.reset();
     assertEquals(0.0, avgFilter.getBaseAverage(), 0.01);
     assertEquals(0, avgFilter.getCount());
-
-    assertEquals(300.0, avgFilter.filter(300.0), .01);
-    assertEquals(1171321.1065, avgFilter.filter(2342342.213), .01);
-    assertEquals(2.8032019402177875E11, avgFilter.filter(840958239423.123213123), .01);
-    assertEquals(2.1024014551633405E11, avgFilter.filter(0.000001232123), .01);
-    avgFilter.reset(1.2329);
-    assertEquals(0.0, avgFilter.getBaseAverage(), 0.01);
-    assertEquals(0, avgFilter.getCount());
 } 
 
 /** 

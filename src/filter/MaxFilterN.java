@@ -69,5 +69,4 @@ public class MaxFilterN<A extends Comparable<A>,B> extends FilterN<A> implements
         }
         return (B)max;
     }
-
 }

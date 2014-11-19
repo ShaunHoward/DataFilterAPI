@@ -71,15 +71,6 @@ public class AveragingFilterN extends FilterN<Double> implements ScalarFilter {
 
     /**
      * Resets the filter by clearing the values list.
-     *
-     * @param value - the value to reset the filter with
-     */
-    public void reset(double value){
-        reset();
-    }
-
-    /**
-     * Resets the filter by clearing the values list.
      */
     @Override
     public void reset() {

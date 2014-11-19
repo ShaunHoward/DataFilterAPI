@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author Shaun Howard
  */
-public class ScalarLinearFilter implements ScalarFilter {
+public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
 
     // The output boundary coefficient for the linear equation.
     private int M;
@@ -200,5 +200,4 @@ public class ScalarLinearFilter implements ScalarFilter {
     public List<Double> getB() {
         return b;
     }
-
 }

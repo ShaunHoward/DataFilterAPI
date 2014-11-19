@@ -3,7 +3,7 @@ package filter;
 import exception.NullValueException;
 
 /**
- * A resettable interface for the filter project.
+ * The resettable interface for the filter project.
  *
  * @author Shaun Howard
  */

@@ -50,16 +50,6 @@ public class AveragingFilter implements ScalarFilter {
     }
 
     /**
-     * Resets the filter by setting base average and count to 0.
-     *
-     * @param value - the value to reset the filter with
-     */
-    @Override
-    public void reset(Double value){
-        reset();
-    }
-
-    /**
      * Gets the base average of the filter thus far, since beginning
      * or last reset.
      *

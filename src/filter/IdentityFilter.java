@@ -22,14 +22,4 @@ public class IdentityFilter<A extends Comparable<A>, B> implements Filter<A , B>
         FilterValidator.throwExceptionWhenNull(value);
         return (B)value;
     }
-
-    /**
-     * Reset is not implemented for this filter.
-     *
-     * @param value - the value to reset the filter with
-     */
-    @Override
-    public void reset(A value) {
-
-    }
 }

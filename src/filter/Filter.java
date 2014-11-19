@@ -22,12 +22,4 @@ public interface Filter<A extends Comparable<A>, B> {
      */
     public B filter(A value) throws NullValueException, EmptyListException, IncorrectSizeException;
 
-    /**
-     * Resets the filter with the input value.
-     *
-     * @param value - the value to reset the filter with
-     * @throws exception.NullValueException - thrown when the input value is null
-     */
-    public void reset(A value) throws NullValueException;
-
 }
