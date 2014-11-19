@@ -1,6 +1,6 @@
 <project name="filter" default="main"
          basedir=".."><!-- Sets variables which can later be used. --><!-- The value of a property is accessed via ${} -->
-    <property name="src.dir" location="filter/src/maze"/>
+    <property name="src.dir" location="filter/src/filter"/>
     <property name="test.dir" location="filter/src/test"/>
     <property name="build.dir" location="bin"/>
     <property name="build.test.dir" location="bin/test"/>
