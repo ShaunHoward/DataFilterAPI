@@ -1,3 +1,7 @@
+package filter;
+
+import exception.NullValueException;
+
 import java.util.ArrayList;
 
 /**
@@ -29,9 +33,13 @@ public class BinomialFilter extends FIRFilter {
      * input multipliers where i ranges from 0 to N.
      */
     private void setBinomials(){
-        for (int i = 0; i <= this.getN(); i++){
-            double b = binomialC(this.getN(), i);
-            this.getB().set(i, b);
+        try {
+            for (int i = 0; i <= this.getN(); i++){
+                double b = binomialC(this.getN(), i);
+                this.getB().set(i, b);
+            }
+        } catch (NullValueException nve) {
+            System.err.println("N was null when setting binomial coefficients.");
         }
     }
 

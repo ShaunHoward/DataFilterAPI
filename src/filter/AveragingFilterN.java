@@ -1,3 +1,7 @@
+package filter;
+
+import exception.NullValueException;
+
 /**
  * An Averaging Filter N is a scalar filter that returns
  * the average of the input data since the last N values
@@ -26,11 +30,11 @@ public class AveragingFilterN extends FilterN<Double> implements ScalarFilter {
      * Calculates the average of the data entered thus far
      * @param value - the value to filter
      * @return the average of the last N values or since the last reset
+     * @throws exception.NullValueException - thrown when the input value is null
      */
     @Override
-    public Double filter(Double value){
-        //check that value is not null.
-
+    public Double filter(Double value) throws NullValueException {
+        FilterValidator.throwExceptionWhenNull(value);
         maintainN();
         getValues().add(value);
         return average();
@@ -41,9 +45,10 @@ public class AveragingFilterN extends FilterN<Double> implements ScalarFilter {
      * the size of the list is greater than or equal to
      * n. Then recalculates the base average of the numbers
      * seen thus far (N-1).
+     * @throws exception.NullValueException - thrown when N is null
      */
     @Override
-    public void maintainN(){
+    public void maintainN() throws NullValueException {
         if (getValues().size() >= getN()) {
             double firstValue = getValues().get(0);
             int count = getValues().size();

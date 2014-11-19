@@ -1,3 +1,7 @@
+package filter;
+
+import exception.NullValueException;
+
 /**
  * An Identity Filter returns the value input without
  * modification.
@@ -11,11 +15,11 @@ public class IdentityFilter<A extends Comparable<A>, B> implements Filter<A , B>
      *
      * @param value - the value to filter
      * @return the identity of the value
+     * @throws exception.NullValueException - thrown when the input value is null
      */
     @Override
-    public B filter(A value){
-        //check null
-
+    public B filter(A value) throws NullValueException {
+        FilterValidator.throwExceptionWhenNull(value);
         return (B)value;
     }
 

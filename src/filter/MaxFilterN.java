@@ -1,3 +1,7 @@
+package filter;
+
+import exception.NullValueException;
+
 /**
  * Max Filter N is a max filter that returns the maximum of the
  * last N values seen or the maximum value seen since the last
@@ -24,10 +28,11 @@ public class MaxFilterN<A extends Comparable<A>,B> extends FilterN<A> implements
      * last reset.
      * @param value - the value to filter
      * @return the maximum value yet seen by the filter
+     * @throws exception.NullValueException - thrown when the input value is null
      */
     @Override
-    public B filter(A value){
-        //check null
+    public B filter(A value) throws NullValueException {
+        FilterValidator.throwExceptionWhenNull(value);
         maintainN();
         getValues().add(value);
         return max();

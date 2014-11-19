@@ -1,3 +1,7 @@
+package filter;
+
+import exception.NullValueException;
+
 /**
  * A generic filter interface.
  *
@@ -12,14 +16,16 @@ public interface Filter<A extends Comparable<A>, B> {
      *
      * @param value - the value to filter
      * @return the filtered value of type B
+     * @throws exception.NullValueException - thrown when the input value is null
      */
-    public B filter(A value);
+    public B filter(A value) throws NullValueException;
 
     /**
      * Resets the filter with the input value.
      *
      * @param value - the value to reset the filter with
+     * @throws exception.NullValueException - thrown when the input value is null
      */
-    public void reset(A value);
+    public void reset(A value) throws NullValueException;
 
 }

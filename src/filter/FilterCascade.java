@@ -1,3 +1,7 @@
+package filter;
+
+import exception.NullValueException;
+
 import java.util.List;
 
 /**
@@ -27,9 +31,10 @@ public class FilterCascade<A extends Comparable<A>,B> implements Filter<A , B> {
      *
      * @param value - the value to filter
      * @return the filtered value
+     * @throws exception.NullValueException - thrown when the input value is null
      */
     @Override
-    public B filter(A value){
+    public B filter(A value) throws NullValueException {
         A output = value;
         for (Filter<A, B> filter : filters){
             output = (A)filter.filter(output);

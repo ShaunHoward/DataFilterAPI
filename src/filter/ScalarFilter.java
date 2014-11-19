@@ -1,3 +1,7 @@
+package filter;
+
+import exception.NullValueException;
+
 /**
  * A scalar filter interface.
  *
@@ -16,8 +20,9 @@ public interface ScalarFilter extends Filter<Double, Double> {
      *
      * @param value - the value to filter
      * @return the filtered value
+     * @throws exception.NullValueException - thrown when the input value is null
      */
-    public Double filter(Double value);
+    public Double filter(Double value) throws NullValueException;
 
     /**
      * Resets the filter with 0.0.

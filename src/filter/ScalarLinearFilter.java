@@ -1,3 +1,7 @@
+package filter;
+
+import exception.NullValueException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -68,10 +72,11 @@ public class ScalarLinearFilter implements ScalarFilter {
      * @param in - the input value to calculate the output in
      *           relation to
      * @return the output value y(i) of the linear equation solution
+     * @throws exception.NullValueException - thrown when the input value is null
      */
     @Override
-    public Double filter(Double in) {
-        //check null
+    public Double filter(Double in) throws NullValueException {
+        FilterValidator.throwExceptionWhenNull(in);
         x.add(i, in);
         double out = sumInput() - sumOutput();
         y.add(i, out);
@@ -84,7 +89,11 @@ public class ScalarLinearFilter implements ScalarFilter {
      */
     @Override
     public void reset() {
-        reset(0.0);
+        try {
+            reset(0.0);
+        } catch (NullValueException e) {
+            System.err.println("Error resetting scalar linear filter with 0.0.");
+        }
     }
 
     /**
@@ -146,9 +155,12 @@ public class ScalarLinearFilter implements ScalarFilter {
      * r(sum of b(0)-b(N)) / (1 + sum of a(1) - a(M)).
      *
      * @param r - the value to reset the filter with
+     * @throws exception.NullValueException - thrown when any value used in
+     * resetting filter is null (r, N, b, M, a)
      */
     @Override
-    public void reset(Double r) {
+    public void reset(Double r) throws NullValueException {
+        FilterValidator.throwExceptionWhenNull(r, N, b, M, a);
         double dividend = 0;
         double quotient = 1;
         for (int n = 0; n <= N; n++){
@@ -157,7 +169,6 @@ public class ScalarLinearFilter implements ScalarFilter {
         for (int m = 1; m <= M; m++){
             quotient += a.get(m);
         }
-
         i = 0;
         inputSum = r;
         dividend = r * dividend;
@@ -168,8 +179,10 @@ public class ScalarLinearFilter implements ScalarFilter {
      * Gets the input boundary coefficient.
      *
      * @return the input boundary coefficient
+     * @throws exception.NullValueException - thrown when N is null
      */
-    public int getN() {
+    public int getN() throws NullValueException {
+        FilterValidator.throwExceptionWhenNull(N);
         return N;
     }
 

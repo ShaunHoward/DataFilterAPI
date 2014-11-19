@@ -1,3 +1,7 @@
+package filter;
+
+import exception.NullValueException;
+
 /**
  * An Averaging Filter is a scalar filter that returns
  * the average of the input data since the filter was
@@ -26,10 +30,11 @@ public class AveragingFilter implements ScalarFilter {
      *
      * @param value - the value to filter
      * @return the average of the values seen thus far
+     * @throws exception.NullValueException - thrown when the input value is null
      */
     @Override
-    public Double filter(Double value){
-        //check null
+    public Double filter(Double value) throws NullValueException {
+        FilterValidator.throwExceptionWhenNull(value);
         double primValue = value;
         baseAverage = ((baseAverage * count) + primValue) / ++count;
         return baseAverage;
@@ -52,5 +57,25 @@ public class AveragingFilter implements ScalarFilter {
     @Override
     public void reset(Double value){
         reset();
+    }
+
+    /**
+     * Gets the base average of the filter thus far, since beginning
+     * or last reset.
+     *
+     * @return the base average of the filter thus far
+     */
+    public double getBaseAverage() {
+        return baseAverage;
+    }
+
+    /**
+     * Gets the count of values filtered thus far, since beginning or
+     * last reset.
+     *
+     * @return the count of values filtered thus far
+     */
+    public int getCount() {
+        return count;
     }
 }
