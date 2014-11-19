@@ -37,17 +37,6 @@ public void testFilter() throws Exception {
     assertEquals(2341234624565785.34347056987058, idFilter.filter(2341234624565785.34347056987058), .01);
     assertEquals(-90865808., idFilter.filter(-90865808.), .01);
     assertEquals(.023423623456567678, idFilter.filter(.023423623456567678), .01);
-} 
-
-/** 
-* 
-* Method: reset(A value) 
-* 
-*/ 
-@Test
-public void testReset() throws Exception { 
-//TODO: Test goes here... 
-} 
-
+}
 
 } 
