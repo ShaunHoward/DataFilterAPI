@@ -173,10 +173,10 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
         FilterValidator.throwExceptionWhenNull(r, b, a);
         double dividend = 0;
         double quotient = 1;
-        for (int n = 0; n <= N; n++){
+        for (int n = 0; n < N; n++){
             dividend += b.get(n);
         }
-        for (int m = 1; m <= M; m++){
+        for (int m = 1; m < M; m++){
             quotient += a.get(m);
         }
         i = 0;
@@ -201,5 +201,23 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
      */
     public List<Double> getB() {
         return b;
+    }
+
+    /**
+     * Gets the input sum.
+     *
+     * @return the input sum
+     */
+    public double getInputSum(){
+        return this.inputSum;
+    }
+
+    /**
+     * Gets the output sum.
+     *
+     * @return the output sum
+     */
+    public double getOutputSum(){
+        return this.outputSum;
     }
 }
