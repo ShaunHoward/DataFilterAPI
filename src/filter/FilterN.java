@@ -26,8 +26,6 @@ public abstract class FilterN<A extends Comparable<A>> {
      * @param n - the number of previous inputs tracked
      */
     public FilterN(int n){
-        //check null
-
         this.n = n;
         values = new ArrayList<>();
     }
@@ -39,7 +37,7 @@ public abstract class FilterN<A extends Comparable<A>> {
      * @throws exception.NullValueException - thrown when the value n is null
      */
     void maintainN() throws NullValueException {
-        FilterValidator.throwExceptionWhenNull(new Integer(n));
+        FilterValidator.throwExceptionWhenNull(n);
         if (values.size() >= n) {
             values.remove(0);
         }
@@ -73,7 +71,7 @@ public abstract class FilterN<A extends Comparable<A>> {
      * @throws exception.NullValueException - thrown when n is null
      */
     public int getN() throws NullValueException {
-        FilterValidator.throwExceptionWhenNull(new Integer(n));
-        return this.n;
+        FilterValidator.throwExceptionWhenNull(n);
+        return n;
     }
 }

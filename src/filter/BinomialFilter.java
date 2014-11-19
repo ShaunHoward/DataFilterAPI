@@ -12,7 +12,6 @@ import java.util.ArrayList;
  */
 public class BinomialFilter extends FIRFilter {
 
-
     /**
      * Constructs a scalar linear filter with input boundary coefficient N
      * and list of multipliers b for input.

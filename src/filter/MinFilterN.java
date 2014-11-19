@@ -9,7 +9,7 @@ import exception.NullValueException;
  *
  * @author Shaun Howard
  */
-public class MinFilterN<A extends Comparable<A>,B> extends FilterN<A> implements Filter<A,B> {
+public class MinFilterN<A extends Comparable<A>,B> extends FilterN<A> implements Filter<A,B>, Resettable<A> {
 
     /**
      * Constructs a Min Filter that resets after N
@@ -36,6 +36,18 @@ public class MinFilterN<A extends Comparable<A>,B> extends FilterN<A> implements
         maintainN();
         getValues().add(value);
         return min();
+    }
+
+    /**
+     * Resets the filter with the given value.
+     *
+     * @param value - the value to reset the filter with
+     * @throws exception.NullValueException - thrown when the input value is null
+     */
+    public void reset(A value) throws NullValueException {
+        FilterValidator.throwExceptionWhenNull(value);
+        getValues().clear();
+        getValues().add(value);
     }
 
     /**
