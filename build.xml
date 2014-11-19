@@ -2,9 +2,11 @@
          basedir=".."><!-- Sets variables which can later be used. --><!-- The value of a property is accessed via ${} -->
     <property name="src.dir" location="filter/src/filter"/>
     <property name="test.dir" location="filter/src/test"/>
+    <property name="exception.dir" location="filter/src/exception"/>
     <property name="build.dir" location="bin"/>
     <property name="build.test.dir" location="bin/test"/>
-    <!-- Variables used for JUnit testin -->
+    <property name="build.exception.dir" location="bin/exception"/>
+    <!-- Variables used for JUnit testing -->
     <property name="test.report.dir" location="testreport"/>
     <!-- Define the classpath which includes the junit.jar and the classes after compiling-->
     <path id="junit.class.path">
@@ -29,6 +31,9 @@
             <classpath refid="junit.class.path"/>
         </javac>
         <javac srcdir="${test.dir}" destdir="${build.test.dir}">
+            <classpath refid="junit.class.path"/>
+        </javac>
+        <javac srcdir="${exception.dir}" destdir="${build.exception.dir}">
             <classpath refid="junit.class.path"/>
         </javac>
     </target>
