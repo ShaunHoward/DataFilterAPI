@@ -24,10 +24,15 @@ public class MinFilter<A extends Comparable<A>,B> implements Filter<A , B>, Rese
     @Override
     public B filter(A value) throws NullValueException {
         FilterValidator.throwExceptionWhenNull(value);
-        if (value.compareTo(min) < 0) {
+        if (min == null || value.compareTo(min) < 0) {
             min = value;
         }
-        return (B)min;
+        try {
+            return (B)min;
+        } catch (ClassCastException cce){
+            System.err.println("Cannot cast properly with typing of MinFilter.");
+            return null;
+        }
     }
 
     /**

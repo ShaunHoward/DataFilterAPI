@@ -24,10 +24,15 @@ public class MaxFilter<A extends Comparable<A>,B> implements Filter<A , B>, Rese
     @Override
     public B filter(A value) throws NullValueException {
         FilterValidator.throwExceptionWhenNull(value);
-        if (value.compareTo(max) > 0) {
+        if (max == null || value.compareTo(max) > 0) {
             max = value;
         }
-        return (B)max;
+        try {
+            return (B)max;
+        } catch (ClassCastException cce){
+            System.err.println("Cannot cast properly with typing of MaxFilter.");
+            return null;
+        }
     }
 
     /**

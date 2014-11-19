@@ -20,6 +20,11 @@ public class IdentityFilter<A extends Comparable<A>, B> implements Filter<A , B>
     @Override
     public B filter(A value) throws NullValueException {
         FilterValidator.throwExceptionWhenNull(value);
-        return (B)value;
+        try {
+            return (B)value;
+        } catch (ClassCastException cce){
+            System.err.println("Cannot cast properly with typing of IdentityFilter.");
+            return null;
+        }
     }
 }

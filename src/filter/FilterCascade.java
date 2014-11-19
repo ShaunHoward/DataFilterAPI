@@ -41,9 +41,14 @@ public class FilterCascade<A extends Comparable<A>,B> implements Filter<A , B> {
     @Override
     public B filter(A value) throws NullValueException, EmptyListException, IncorrectSizeException {
         A output = value;
-        for (Filter<A, B> filter : filters){
-            output = (A)filter.filter(output);
+        try {
+            for (Filter<A, B> filter : filters){
+                output = (A)filter.filter(output);
+            }
+            return (B)output;
+        } catch (ClassCastException cce){
+            System.err.println("Cannot cast properly with typing of FilterCascade.");
+            return null;
         }
-        return (B)output;
     }
 }

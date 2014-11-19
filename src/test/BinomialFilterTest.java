@@ -2,40 +2,38 @@ package test;
 
 import filter.BinomialFilter;
 import org.junit.Test;
-import org.junit.Before; 
+import org.junit.Before;
 import org.junit.After;
 
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-/** 
-* BinomialFilter Tester. 
-* 
-* @author Shaun Howard
-* @since <pre>Nov 18, 2014</pre> 
-* @version 1.0 
-*/ 
+/**
+ * BinomialFilter Tester.
+ *
+ * @author Shaun Howard
+ * @version 1.0
+ * @since <pre>Nov 18, 2014</pre>
+ */
 public class BinomialFilterTest {
 
     BinomialFilter bf;
     ArrayList<Double> bfList;
     Double[] bfArr = {4.5, 800.323, 2342352645243.2343464534534534, 0.0000000000001};
 
-@Before
-public void before() throws Exception {
-    bfList = new ArrayList<>();
-    for (Double value : bfArr) {
-        bfList.add(value);
+    @Before
+    public void before() throws Exception {
+        bfList = new ArrayList<>();
+        for (Double value : bfArr) {
+            bfList.add(value);
+        }
+        bf = new BinomialFilter(bfList.size(), bfList);
     }
-    bf = new BinomialFilter(bfList.size(), bfList);
-}
 
     /**
-     *
      * Method: filter(value)
      * Structured Basis, Good data
-     *
      */
     @Test
     public void testFilter() throws Exception {
@@ -47,13 +45,11 @@ public void before() throws Exception {
         assertEquals(7.394527570285598E15, bf.filter(-483829295.23445234), 0.01);
     }
 
-/** 
-* 
-* Method: setBinomials() 
-* 
-*/ 
-@Test
-public void testSetBinomials() throws Exception { 
+    /**
+     * Method: setBinomials()
+     */
+    @Test
+    public void testSetBinomials() throws Exception {
 //TODO: Test goes here... 
 /* 
 try { 
@@ -64,16 +60,14 @@ try {
 } catch(IllegalAccessException e) { 
 } catch(InvocationTargetException e) { 
 } 
-*/ 
-} 
+*/
+    }
 
-/** 
-* 
-* Method: binomialC(int n, int i) 
-* 
-*/ 
-@Test
-public void testBinomialC() throws Exception { 
+    /**
+     * Method: binomialC(int n, int i)
+     */
+    @Test
+    public void testBinomialC() throws Exception {
 //TODO: Test goes here... 
 /* 
 try { 
@@ -84,7 +78,7 @@ try {
 } catch(IllegalAccessException e) { 
 } catch(InvocationTargetException e) { 
 } 
-*/ 
-} 
+*/
+    }
 
 } 

@@ -71,6 +71,11 @@ public class MinFilterN<A extends Comparable<A>,B> extends FilterN<A> implements
                 min = value;
             }
         }
-        return (B)min;
+        try {
+            return (B)min;
+        } catch (ClassCastException cce){
+            System.err.println("Cannot cast properly with typing of MinFilterN.");
+            return null;
+        }
     }
 }

@@ -71,6 +71,11 @@ public class MaxFilterN<A extends Comparable<A>,B> extends FilterN<A> implements
                 max = value;
             }
         }
-        return (B)max;
+        try {
+            return (B)max;
+        } catch (ClassCastException cce){
+            System.err.println("Cannot cast properly with typing of MaxFilterN.");
+            return null;
+        }
     }
 }
