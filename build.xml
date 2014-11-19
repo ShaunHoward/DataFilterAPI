@@ -18,11 +18,13 @@
     <target name="clean">
         <delete dir="${build.dir}"/>
         <delete dir="${test.report.dir}"/>
+        <delete dir="${build.exception.dir}"/>
     </target>
     <!-- Creates the build, docs and dist directory-->
     <target name="makedir">
         <mkdir dir="${build.dir}"/>
         <mkdir dir="${build.test.dir}"/>
+        <mkdir dir="${build.exception.dir}"/>
         <mkdir dir="${test.report.dir}"/>
     </target>
     <!-- Compiles the java code (including the usage of library for JUnit -->
