@@ -1,8 +1,11 @@
 package test;
 
-import org.junit.Test; 
+import filter.IdentityFilter;
+import org.junit.Test;
 import org.junit.Before; 
-import org.junit.After; 
+import org.junit.After;
+
+import static org.junit.Assert.assertEquals;
 
 /** 
 * IdentityFilter Tester. 
@@ -13,22 +16,27 @@ import org.junit.After;
 */ 
 public class IdentityFilterTest { 
 
-@Before
-public void before() throws Exception { 
-} 
+    IdentityFilter<Double, Double> idFilter;
+    IdentityFilter<Double, Integer> badIdFilter;
 
-@After
-public void after() throws Exception { 
+@Before
+public void before() throws Exception {
+    idFilter = new IdentityFilter<>();
+    badIdFilter = new IdentityFilter<>();
 } 
 
 /** 
 * 
-* Method: filter(A value) 
+* Method: filter(A value)
+* Structured Basis, Data flow, Good Data
 * 
 */ 
 @Test
 public void testFilter() throws Exception { 
-//TODO: Test goes here... 
+    assertEquals(100.0, idFilter.filter(100.0), .01);
+    assertEquals(2341234624565785.34347056987058, idFilter.filter(2341234624565785.34347056987058), .01);
+    assertEquals(-90865808., idFilter.filter(-90865808.), .01);
+    assertEquals(.023423623456567678, idFilter.filter(.023423623456567678), .01);
 } 
 
 /** 

@@ -46,4 +46,13 @@ public class MinFilter<A extends Comparable<A>,B> implements Filter<A , B>, Rese
         FilterValidator.throwExceptionWhenNull(value);
         this.min = value;
     }
+
+    /**
+     * Gets the minimum value seen thus far.
+     *
+     * @return the min value seen thus far
+     */
+    public A getMin(){
+        return this.min;
+    }
 }

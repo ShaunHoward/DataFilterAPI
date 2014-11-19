@@ -35,7 +35,7 @@ public class AveragingFilterTest {
 
     /**
      * Method: filter(Double value)
-     * Structured Basis
+     * Good data
      */
     @Test
     public void testFilterGoodData() throws Exception {

@@ -46,4 +46,13 @@ public class MaxFilter<A extends Comparable<A>,B> implements Filter<A , B>, Rese
         FilterValidator.throwExceptionWhenNull(value);
         this.max = value;
     }
+
+    /**
+     * Gets the max value thus far.
+     *
+     * @return the max value seen thus far
+     */
+    public A getMax(){
+        return this.max;
+    }
 }

@@ -2,7 +2,7 @@ package test;
 
 import filter.FIRFilter;
 import org.junit.Test;
-import org.junit.Before; 
+import org.junit.Before;
 
 import java.util.ArrayList;
 

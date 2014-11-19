@@ -39,7 +39,7 @@ public abstract class FilterN<A extends Comparable<A>> {
      * @throws exception.EmptyListException - thrown when values list is empty
      * @throws exception.IncorrectSizeException - thrown when n is negative
      */
-    void maintainN() throws EmptyListException, IncorrectSizeException {
+    public void maintainN() throws EmptyListException, IncorrectSizeException {
         if (values.size() >= getN()) {
             FilterValidator.throwExceptionWhenEmpty(values);
             values.remove(0);

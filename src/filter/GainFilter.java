@@ -18,6 +18,6 @@ public class GainFilter extends FIRFilter {
      * @param b - the gain factor of the filter
      */
     public GainFilter(double b) {
-        super(0, new ArrayList<Double>(Arrays.asList(b)));
+        super(1, new ArrayList<Double>(Arrays.asList(b)));
     }
 }
