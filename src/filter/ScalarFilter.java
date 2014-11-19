@@ -1,5 +1,7 @@
 package filter;
 
+import exception.EmptyListException;
+import exception.IncorrectSizeException;
 import exception.NullValueException;
 
 /**
@@ -21,8 +23,10 @@ public interface ScalarFilter extends Filter<Double, Double> {
      * @param value - the value to filter
      * @return the filtered value
      * @throws exception.NullValueException - thrown when the input value is null
+     * @throws exception.EmptyListException - thrown when any lists used to filter are empty
+     * @throws exception.IncorrectSizeException - thrown when any sizes used to filter are mismatched
      */
-    public Double filter(Double value) throws NullValueException;
+    public Double filter(Double value) throws NullValueException, EmptyListException, IncorrectSizeException;
 
     /**
      * Resets the filter with 0.0.

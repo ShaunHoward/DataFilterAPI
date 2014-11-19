@@ -1,5 +1,7 @@
 package filter;
 
+import exception.EmptyListException;
+import exception.IncorrectSizeException;
 import exception.NullValueException;
 
 import java.util.ArrayList;
@@ -75,8 +77,8 @@ public class ScalarLinearFilter implements ScalarFilter {
      * @throws exception.NullValueException - thrown when the input value is null
      */
     @Override
-    public Double filter(Double in) throws NullValueException {
-        FilterValidator.throwExceptionWhenNull(in);
+    public Double filter(Double in) throws NullValueException, EmptyListException, IncorrectSizeException {
+        FilterValidator.throwExceptionWhenNull(in, M, N, a, b);
         x.add(i, in);
         double out = sumInput() - sumOutput();
         y.add(i, out);
@@ -102,10 +104,12 @@ public class ScalarLinearFilter implements ScalarFilter {
      * and i is the current iteration of filter input.
      *
      * @return the sum of the input side of the linear equation
+     * @throws exception.EmptyListException - thrown when lists b or x are empty
+     * @throws exception.IncorrectSizeException - thrown when the size of b is not N
      */
-    private double sumInput() {
-        //check that b and x are not empty.
-        //check that b has n elements
+    private double sumInput() throws IncorrectSizeException, EmptyListException {
+        FilterValidator.throwExceptionWhenEmpty(b, x);
+        FilterValidator.throwIncorrectSizeException(b, N);
 
         double sum = 0;
         IN_SUM_LOOP:
@@ -128,10 +132,12 @@ public class ScalarLinearFilter implements ScalarFilter {
      * Sum of a(m) * y(i-m), where m starts at 1 and ends at M.
      *
      * @return the left side of the linear equation without the output included
+     * @throws exception.EmptyListException - thrown when lists a or y are empty
+     * @throws exception.IncorrectSizeException - thrown when the size of a is not M
      */
-    private double sumOutput() {
-        //check that a and y are not empty.
-        //check that a has m elements
+    private double sumOutput() throws EmptyListException, IncorrectSizeException {
+        FilterValidator.throwExceptionWhenEmpty(a, y);
+        FilterValidator.throwIncorrectSizeException(a, M);
 
         double sum = 0;
         OUT_SUM_LOOP:

@@ -1,5 +1,7 @@
 package filter;
 
+import exception.EmptyListException;
+import exception.IncorrectSizeException;
 import exception.NullValueException;
 
 import java.util.List;
@@ -32,9 +34,12 @@ public class FilterCascade<A extends Comparable<A>,B> implements Filter<A , B> {
      * @param value - the value to filter
      * @return the filtered value
      * @throws exception.NullValueException - thrown when the input value is null
+     * @throws exception.EmptyListException - thrown when any lists in filters are empty
+     * @throws exception.IncorrectSizeException - thrown when any mismatched sizes are encountered in
+     * filters
      */
     @Override
-    public B filter(A value) throws NullValueException {
+    public B filter(A value) throws NullValueException, EmptyListException, IncorrectSizeException {
         A output = value;
         for (Filter<A, B> filter : filters){
             output = (A)filter.filter(output);
@@ -47,11 +52,14 @@ public class FilterCascade<A extends Comparable<A>,B> implements Filter<A , B> {
      *
      * @param filter - the filter to reset at the given index
      * @param value - the value to reset the filter with
+     * @throws exception.NullValueException - thrown when either of the input
+     * values are null
+     * @throws exception.IncorrectSizeException - thrown when the input filter to reset
+     * is out of the range of possible filters to reset
      */
-    public void reset(int filter, A value){
-        //check null
-        //check 0 <= number < filter.size()
-
+    public void reset(int filter, A value) throws NullValueException, IncorrectSizeException {
+        FilterValidator.throwExceptionWhenNull(new Integer(filter));
+        FilterValidator.throwWhenOutOfRange(filter, 0, filters.size());
         filters.get(filter).reset(value);
     }
 

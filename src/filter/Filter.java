@@ -1,5 +1,7 @@
 package filter;
 
+import exception.EmptyListException;
+import exception.IncorrectSizeException;
 import exception.NullValueException;
 
 /**
@@ -18,7 +20,7 @@ public interface Filter<A extends Comparable<A>, B> {
      * @return the filtered value of type B
      * @throws exception.NullValueException - thrown when the input value is null
      */
-    public B filter(A value) throws NullValueException;
+    public B filter(A value) throws NullValueException, EmptyListException, IncorrectSizeException;
 
     /**
      * Resets the filter with the input value.
