@@ -75,10 +75,14 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
      *           relation to
      * @return the output value y(i) of the linear equation solution
      * @throws exception.NullValueException - thrown when the input, a, or b is null
+     * @throws exception.IncorrectSizeException - thrown when i is not in the range of x or y's size
+     * @throws exception.EmptyListException - thrown when a list used for calculation is empty
      */
     @Override
-    public Double filter(Double in) throws NullValueException, EmptyListException, IncorrectSizeException {
+    public Double filter(Double in) throws NullValueException, IncorrectSizeException, EmptyListException {
         FilterValidator.throwExceptionWhenNull(in, a, b);
+        FilterValidator.throwWhenOutOfRange(i, 0, x.size());
+        FilterValidator.throwWhenOutOfRange(i, 0, y.size());
         x.add(i, in);
         double out = sumInput() - sumOutput();
         y.add(i, out);
@@ -113,7 +117,7 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
 
         double sum = 0;
         IN_SUM_LOOP:
-        for (int n = 0; n <= N; n++){
+        for (int n = 0; n < N; n++){
             //sum = sum + b(n) * x(i-n)
             if ((i - n) >= 0) {
                 sum += b.get(n) * x.get(i - n);
@@ -136,12 +140,12 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
      * @throws exception.IncorrectSizeException - thrown when the size of a is not M
      */
     private double sumOutput() throws EmptyListException, IncorrectSizeException {
-        FilterValidator.throwExceptionWhenEmpty(a, y);
+//        FilterValidator.throwExceptionWhenEmpty(a, y);
         FilterValidator.throwIncorrectSizeException(a, M);
 
         double sum = 0;
         OUT_SUM_LOOP:
-        for (int m = 1; m <= M; m++){
+        for (int m = 1; m < M; m++){
             //sum = sum + a(m) * y(i-m)
             if ((i - m) >= 0) {
                 sum += a.get(m) * y.get(i - m);

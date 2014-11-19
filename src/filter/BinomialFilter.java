@@ -1,5 +1,6 @@
 package filter;
 
+import exception.IncorrectSizeException;
 import exception.NullValueException;
 
 import java.util.ArrayList;
@@ -31,11 +32,17 @@ public class BinomialFilter extends FIRFilter {
      * Sets b(i) to N choose i for each b in the list of
      * input multipliers where i ranges from 0 to N.
      */
-    private void setBinomials(){
-        for (int i = 0; i <= this.getN(); i++){
-            double b = binomialC(this.getN(), i);
-            this.getB().set(i, b);
+    private void setBinomials() {
+        try {
+            FilterValidator.throwIncorrectSizeException(this.getB(), this.getN());
+            for (int i = 0; i < this.getN(); i++){
+                double b = binomialC(this.getN(), i);
+                this.getB().set(i, b);
+            }
+        } catch (IncorrectSizeException ise) {
+            System.err.println("The binomial list is not the correct size.");
         }
+
     }
 
     /**
