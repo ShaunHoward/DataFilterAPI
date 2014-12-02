@@ -144,16 +144,16 @@ public class AveragingFilterNTest {
      */
     @Test
     public void testAverage() throws Exception {
-//TODO: Test goes here... 
-/* 
-try { 
-   Method method = AveragingFilterN.getClass().getMethod("average"); 
-   method.setAccessible(true); 
-   method.invoke(<Object>, <Parameters>); 
-} catch(NoSuchMethodException e) { 
-} catch(IllegalAccessException e) { 
-} catch(InvocationTargetException e) { 
-} 
+//TODO: Test goes here...
+/*
+try {
+   Method method = AveragingFilterN.getClass().getMethod("average");
+   method.setAccessible(true);
+   method.invoke(<Object>, <Parameters>);
+} catch(NoSuchMethodException e) {
+} catch(IllegalAccessException e) {
+} catch(InvocationTargetException e) {
+}
 */
     }
 

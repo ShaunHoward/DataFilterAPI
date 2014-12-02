@@ -1,60 +1,90 @@
 <project name="filter" default="main"
          basedir=".."><!-- Sets variables which can later be used. --><!-- The value of a property is accessed via ${} -->
-    <property name="src.dir" location="filter/src/filter"/>
+    <property name="app.name"    value="filter" />
+    <property name="src.dir" location="filter/src"/>
+    <property name="filter.dir" location="filter/src/filter"/>
     <property name="test.dir" location="filter/src/test"/>
     <property name="exception.dir" location="filter/src/exception"/>
-    <property name="build.dir" location="bin"/>
-    <property name="build.test.dir" location="bin/test"/>
-    <property name="build.exception.dir" location="bin/exception"/>
+    <property name="build.dir" location="filter/bin"/>
+    <property name="build.test.dir" location="filter/bin/test"/>
+    <property name="build.exception.dir" location="filter/bin/exception"/>
+    <property name="doc.dir" location="filter/doc"/>
+    <property name="jar.dir" location="filter/jar"/>
+    <property name="packages" location="filter.src.*"/>
     <!-- Variables used for JUnit testing -->
     <property name="test.report.dir" location="testreport"/>
     <!-- Define the classpath which includes the junit.jar and the classes after compiling-->
-    <path id="junit.class.path">
-        <pathelement location="filter/junit.jar"/>
-        <pathelement location="filter/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
-        <pathelement location="${build.dir}"/>
+    <path id="project-classpath">
+        <fileset dir="${build.dir}" includes="*.class" />
+        <!--<fileset dir="${build.exception.dir}" includes="*.class" />-->
+        <fileset dir="${filter.dir}" includes="*.class" />
+        <fileset dir="${jar.dir}" includes="*.jar"/>
+
+        <!--<pathelement location="filter/junit.jar"/>-->
+        <!--<pathelement location="filter/org.hamcrest.core_1.1.0.v20090501071000.jar"/>-->
+        <!--<pathelement location="${build.dir}"/>-->
+        <!--<pathelement location="${build.test.dir}"/>-->
+        <!--<pathelement location="${build.exception.dir}"/>-->
+    </path>
+
+    <path id="test-classpath">
+        <fileset dir="${build.test.dir}" includes="*.class" />
+        <path refid="project-classpath"/>
     </path>
     <!-- Deletes the existing build, docs and dist directory-->
     <target name="clean">
         <delete dir="${build.dir}"/>
         <delete dir="${test.report.dir}"/>
+        <delete dir="${build.test.dir}"/>
         <delete dir="${build.exception.dir}"/>
-    </target>
-    <!-- Creates the build, docs and dist directory-->
-    <target name="makedir">
+        <delete dir="${doc.dir}"/>
         <mkdir dir="${build.dir}"/>
-        <mkdir dir="${build.test.dir}"/>
-        <mkdir dir="${build.exception.dir}"/>
+        <!--<mkdir dir="${build.test.dir}"/>-->
+        <!--<mkdir dir="${build.exception.dir}"/>-->
         <mkdir dir="${test.report.dir}"/>
+        <mkdir dir="${doc.dir}"/>
     </target>
+
     <!-- Compiles the java code (including the usage of library for JUnit -->
-    <target name="compile" depends="clean, makedir">
-        <javac srcdir="${src.dir}" destdir="${build.dir}">
-            <classpath refid="junit.class.path"/>
-        </javac>
-        <javac srcdir="${test.dir}" destdir="${build.test.dir}">
-            <classpath refid="junit.class.path"/>
-        </javac>
-        <javac srcdir="${exception.dir}" destdir="${build.exception.dir}">
-            <classpath refid="junit.class.path"/>
-        </javac>
+    <target name="compile" depends="clean">
+        <javac encoding="UTF-8" srcdir="${exception.dir}" destdir="${build.dir}" classpathref="project-classpath"/>
+        <javac encoding="UTF-8" srcdir="${filter.dir}" destdir="${build.dir}" classpathref="project-classpath"/>
+        <javac encoding="UTF-8" srcdir="${test.dir}" destdir="${build.dir}" classpathref="project-classpath"/>
     </target>
-    <!-- Run the JUnit Tests --><!-- Output is XML, could also be plain-->
-    <!--<target name="junit" depends="compile">-->
-        <!--<junit printsummary="on" fork="true" haltonfailure="yes">-->
-            <!--<classpath refid="junit.class.path"/>-->
+
+    <!-- Create the API documentation -->
+
+    <target name="javadoc" depends="compile">
+
+        <javadoc packagenames="filter, exception"
+                 sourcepath="${src.dir}"
+                 destdir="${doc.dir}"
+                 classpathref="project-classpath"
+                 author="true"
+                 version="true"
+                 use="true"
+                 windowtitle="${app.name} API"
+                 doctitle="&lt;h1&gt;${app.name}&lt;/h1&gt;"
+                />
+
+    </target>
+
+     <!--Run the JUnit Tests  Output is XML, could also be plain-->
+    <target name="junit" depends="compile">
+        <junit printsummary="yes" haltonfailure="yes" showoutput="yes">
+            <classpath refid="test-classpath"/>
+            <formatter type="plain" usefile="false"/>
+            <batchtest>
+                <fileset dir="${build.test.dir}">
+                    <include name="**/*Test.class"/>
+                </fileset>
+            </batchtest>
             <!--<classpath>-->
                 <!--<pathelement location="${build.test.dir}"/>-->
             <!--</classpath>-->
-            <!--<formatter type="xml"/>-->
-            <!--<batchtest todir="${test.report.dir}">-->
-                <!--<fileset dir="${test.dir}">-->
-                    <!--<include name="**/*Test*.java"/>-->
-                <!--</fileset>-->
-            <!--</batchtest>-->
-        <!--</junit>-->
-    <!--</target>-->
-    <target name="main" depends="compile">
+        </junit>
+    </target>
+    <target name="main" depends="javadoc, junit">
         <description>Main target</description>
     </target>
 </project>
