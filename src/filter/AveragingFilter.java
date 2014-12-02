@@ -3,8 +3,8 @@ package filter;
 import exception.NullValueException;
 
 /**
- * An Averaging Filter is a scalar filter that returns
- * the average of the input data since the filter was
+ * An Averaging Filter is a scalar filter that operates on Double values in an effort to
+ * calculate the average of the input data since the filter was
  * initialized or last reset.
  *
  * @author Shaun Howard
