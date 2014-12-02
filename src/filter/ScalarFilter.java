@@ -21,6 +21,12 @@ import exception.NullValueException;
  * type.
  * </p>
  * <p>
+ * The ScalarFilter interface provides one method to reset the current filter instance. The method
+ * should perform within a maximum of linear time operation depending on the implementation. No value
+ * is returned by the reset method, however, any implementation should reset the scalar filter
+ * to a zero-equivalent state, including all data structures used.
+ * </p>
+ * <p>
  * All scalar filter implementations have restrictions on the elements they may filter. For example,
  * all implementations prohibit null elements and some have restrictions on the types of their elements.
  * Attempting to add an ineligible element throws an unchecked NullValueException.
@@ -31,7 +37,7 @@ import exception.NullValueException;
  * contains zero elements but should contain at least one element for proper filter operation. The latter exception is thrown when
  * the values operated on are not within the ranges necessary for filter operation.
  * </p>
- * 
+ *
  * @author Shaun Howard
  */
 public interface ScalarFilter extends Filter<Double, Double> {
