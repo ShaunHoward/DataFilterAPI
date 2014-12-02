@@ -6,7 +6,7 @@ import exception.NullValueException;
 
 /**
  * <p>
- * A filter designed to produce a distinctly filtered output value.
+ * A filter designed to produce a distinctly filtered generic output value.
  * The output value depends on the type of filter implemented by the user.
  * The user of this interface has precise control over when and what value is filtered.
  * A single element can only be accessed after filtering. Typically, previously filtered elements are
