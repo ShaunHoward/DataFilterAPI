@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * <p>
- * A FilterCascade is a generic implementation of the Filter interface designed to filters a given input value through
+ * A FilterCascade is a generic implementation of the Filter interface designed to filter a given input value through
  * a cascade of Filters sequentially. Implements all Filter operations.
  * </p>
  * <p>

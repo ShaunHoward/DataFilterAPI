@@ -37,15 +37,21 @@ import java.util.ArrayList;
 public class BinomialFilter extends FIRFilter {
 
     /**
-     * Constructs a scalar linear filter with input boundary coefficient N
-     * and list of multipliers b for input.
-     * The list of multipliers for the output, a, have values initialized to 0
-     * after super is called.
-     * The boundary coefficient for the output, M, is set to 0 since summation
-     * of output does not take place in a FIR/Binomial filter.
+     * <p>
+     * Constructs a BinomialFilter with input coefficient N
+     * and b as a list of double values representing a placeholder list
+     * for the binomial coefficients which will be calculated and
+     * indexed from 0 to N in this list after
+     * calling the FIRFilter constructor.
+     * </p>
+     * <p>
+     * This constructor calls
+     * setBinomials() method to setup the binomial coefficient values
+     * b(i) = (n C i) indexed by i in the specified list of doubles.
+     * N must be equal to the size of the input list for proper operation.
+     * </p>
      *
-     * @param N - the input boundary coefficient
-     * @param b - the multiplier list for input
+     * @param b - the gain factor of the filter
      */
     public BinomialFilter(int N, ArrayList<Double> b) {
         super(N, b);
