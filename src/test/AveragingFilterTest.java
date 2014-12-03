@@ -8,11 +8,12 @@ import filter.AveragingFilter;
 import static org.junit.Assert.assertEquals;
 
 /**
- * AveragingFilter Tester.
+ * A test class for the AveragingFilter class.
+ * The numbers chosen to filter demonstrate the
+ * class' support for signed and unsigned small, normal, and large-sized numbers but are
+ * arbitrarily chosen and do not precisely represent any cases that have issues.
  *
  * @author Shaun Howard
- * @version 1.0
- * @since <pre>Nov 18, 2014</pre>
  */
 public class AveragingFilterTest {
 

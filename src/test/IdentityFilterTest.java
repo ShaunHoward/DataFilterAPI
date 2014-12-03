@@ -7,11 +7,12 @@ import org.junit.Before;
 import static org.junit.Assert.assertEquals;
 
 /** 
-* IdentityFilter Tester. 
+* A test class for the IdentityFilter class.
+* The numbers chosen to filter demonstrate the
+* class' support for signed and unsigned small, normal, and large-sized numbers but are
+* arbitrarily chosen and do not precisely represent any cases that have issues.
 * 
 * @author Shaun Howard
-* @since <pre>Nov 18, 2014</pre> 
-* @version 1.0 
 */ 
 public class IdentityFilterTest { 
 
