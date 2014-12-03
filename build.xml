@@ -54,7 +54,7 @@
 
     <!-- Create the API documentation -->
 
-    <target name="javadoc" depends="compile">
+    <target name="doc" depends="compile">
 
         <javadoc packagenames="filter, exception"
                  sourcepath="${src.dir}"
@@ -84,7 +84,7 @@
             <!--</classpath>-->
         </junit>
     </target>
-    <target name="main" depends="javadoc, junit">
+    <target name="main" depends="doc, junit">
         <description>Main target</description>
     </target>
 </project>
