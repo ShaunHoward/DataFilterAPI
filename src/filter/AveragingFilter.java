@@ -17,7 +17,7 @@ import exception.NullValueException;
  * as well as an integer count of filtered values. Both the base average and the count of filtered values can be reset
  * to zero with the reset() method. After reset() is called, no previous data is retained.
  * Each instance will thus support up to either 2,147,483,647 filter calls (maximum 32-bit integer size) or a calculated
- * base average of up to the maximum stored amount for a double-precision value.
+ * base average of up to the maximum size for a double-precision value.
  * </p>
  *
  * @author Shaun Howard
