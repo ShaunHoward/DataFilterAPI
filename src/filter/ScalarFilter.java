@@ -7,7 +7,7 @@ import exception.NullValueException;
 /**
  * <p>
  * A scalar filter designed to produce a distinctly filtered Double output value.
- * The output value depends on both the input value provided by the user and previously
+ * The output value depends on both the Double input value provided by the user and previously
  * entered values specified in previous calls to the filter method. The user of this interface
  * has precise control over when and what value is filtered. A range of the previously entered
  * input values are accessible to the user after filtering. The range of tracked input values
