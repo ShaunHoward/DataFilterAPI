@@ -28,7 +28,7 @@ public void before() throws Exception {
 /** 
 * 
 * Method: filter(A value)
-* Structured Basis, Data flow, Good Data
+* Type: Structured Basis, Data flow, Good Data
 * 
 */ 
 @Test

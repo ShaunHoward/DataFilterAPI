@@ -85,7 +85,7 @@
     <!-- Create the API documentation -->
     <target name="doc"
             depends="compile">
-        <javadoc packagenames="filter, exception"
+        <javadoc packagenames="filter, exception, test"
                  sourcepath="${src.dir}"
                  destdir="${doc.dir}"
                  classpathref="project-classpath"

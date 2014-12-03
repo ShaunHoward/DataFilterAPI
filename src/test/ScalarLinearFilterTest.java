@@ -38,6 +38,7 @@ public class ScalarLinearFilterTest {
 
     /**
      * Method: filter(Double in)
+     * Type: Structured Basis
      */
     @Test
     public void testFilter() throws Exception {
@@ -49,6 +50,7 @@ public class ScalarLinearFilterTest {
 
     /**
      * Method: filter(Double in)
+     * Type: Data-flow
      */
     @Test
     public void testFilterOutOfRange() throws Exception {
@@ -60,6 +62,7 @@ public class ScalarLinearFilterTest {
 
     /**
      * Method: reset()
+     * Type: Structured basis
      */
     @Test
     public void testReset() throws Exception {
@@ -74,6 +77,7 @@ public class ScalarLinearFilterTest {
 
     /**
      * Method: reset(Double r)
+     * Type: Structured basis
      */
     @Test
     public void testResetR() throws Exception {

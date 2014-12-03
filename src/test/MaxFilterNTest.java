@@ -36,7 +36,7 @@ public class MaxFilterNTest {
 
     /**
      * Method: filter(Double value)
-     * Structured Basis
+     * Type: Structured Basis
      */
     @Test
     public void testFilterStructure() throws Exception {
@@ -45,7 +45,7 @@ public class MaxFilterNTest {
 
     /**
      * Method: filter(Double value)
-     * Good data
+     * Type: Good data
      */
     @Test
     public void testFilterGoodData() throws Exception {
@@ -58,7 +58,7 @@ public class MaxFilterNTest {
 
     /**
      * Method: filter(Double value)
-     * Bad data
+     * Type: Bad data
      */
     @Test(expected = NullValueException.class)
     public void testFilterBadData() throws Exception {
@@ -67,7 +67,7 @@ public class MaxFilterNTest {
 
     /**
      * Method: filter(Double value)
-     * Stress
+     * Type: Stress
      */
     @Test
     public void testFilterStress() throws Exception {
@@ -85,7 +85,7 @@ public class MaxFilterNTest {
 
     /**
      * Method: maintainN()
-     * Lower boundary
+     * Type: Lower boundary
      */
     @Test(expected = IncorrectSizeException.class)
     public void testMaintainNNegBoundary() throws Exception {
@@ -97,7 +97,7 @@ public class MaxFilterNTest {
 
     /**
      * Method: maintainN()
-     * At boundary, structured basis
+     * Type: At boundary, structured basis
      */
     @Test
     public void testMaintainNAtBoundaryStructure() throws Exception {
@@ -108,7 +108,7 @@ public class MaxFilterNTest {
 
     /**
      * Method: maintainN()
-     * At boundary, structured basis
+     * Type: At boundary, structured basis
      */
     @Test(expected = EmptyListException.class)
     public void testMaintainNAtBoundaryException() throws Exception {
@@ -117,7 +117,7 @@ public class MaxFilterNTest {
 
     /**
      * Method: maintainN()
-     * Higher boundary, structured basis
+     * Type: Higher boundary, structured basis
      */
     @Test
     public void testMaintainNHighBoundary() throws Exception {
@@ -128,7 +128,7 @@ public class MaxFilterNTest {
 
     /**
      * Method: reset()
-     * Structured basis
+     * Type: Structured basis
      */
     @Test
     public void testReset() throws Exception {

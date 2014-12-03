@@ -33,7 +33,7 @@ public class GainFilterTest {
 
     /**
      * Method: filter(value)
-     * Structured Basis, Good data
+     * Type: Structured Basis, Good data
      */
     @Test
     public void testFilter() throws Exception {

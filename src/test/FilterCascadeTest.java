@@ -44,7 +44,7 @@ public class FilterCascadeTest {
 
     /**
      * Method: filter(A value)
-     * Structured Basis
+     * Type: Structured Basis
      */
     @Test
     public void testFilter() throws Exception {
@@ -53,7 +53,7 @@ public class FilterCascadeTest {
 
     /**
      * Method: filter(A value)
-     * Structured Basis
+     * Type: Structured Basis
      */
     @Test
     public void testBadFilter() throws Exception {

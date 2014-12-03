@@ -26,7 +26,7 @@ public class AveragingFilterTest {
 
     /**
      * Method: filter(Double value)
-     * Structured Basis
+     * Type: Structured Basis
      */
     @Test
     public void testFilterStructure() throws Exception {
@@ -35,7 +35,7 @@ public class AveragingFilterTest {
 
     /**
      * Method: filter(Double value)
-     * Good data
+     * Type: Good data
      */
     @Test
     public void testFilterGoodData() throws Exception {
@@ -49,7 +49,7 @@ public class AveragingFilterTest {
 
     /**
      * Method: filter(Double value)
-     * Bad data
+     * Type: Bad data
      */
     @Test(expected = NullValueException.class)
     public void testFilterBadData() throws Exception {
@@ -58,7 +58,7 @@ public class AveragingFilterTest {
 
     /**
      * Method: reset()
-     * Structured basis / data flow
+     * Type: Structured basis / data flow
      */
     @Test
     public void testReset() throws Exception {
