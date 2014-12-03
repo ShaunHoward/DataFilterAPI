@@ -7,6 +7,8 @@ import java.util.Arrays;
  * A Gain Filter is a FIR Filter that multiplies only the input by a constant factor,
  * b(0), to get the filtered output.
  *
+ * @see filter.FIRFilter
+ *
  * @author Shaun Howard
  */
 public class GainFilter extends FIRFilter {

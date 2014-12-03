@@ -18,6 +18,7 @@ import java.util.List;
  * This linear equation considers lists of input values specified upon construction, which are where the
  * 'a' and 'b' indexed values come from in the equation. Boundary coefficients are used to limit the calculations
  * of the linear equation on both the input (N) and output (M) sum sides of the equation as in the equation above.
+ * Initially, before calling the filter method, all x and y values stored are zero.
  * </p>
  * <p>
  * The sumInput(), sumOutput(), and reset operations run in linear time. The remaining operations
