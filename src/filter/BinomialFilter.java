@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * <p>
- * A Binomial Filter is a FIR Filter where each b(i) = (nCi), which is the binomial
+ * A BinomialFilter is a FIRFilter where each b(i) = (nCi), which is the binomial
  * coefficient at i, where i is the current filter call iteration. There cannot be more than N iterations of
  * filtering performed to achieve unique results. Past N iterations, any calculated results
  * will remain the same as the last affected value of filtering unless reset is called.

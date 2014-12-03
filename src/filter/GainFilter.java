@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 /**
  * <p>
- * A GainFilter is a FIR Filter that multiplies only the input by a constant factor,
+ * A GainFilter is a FIRFilter that multiplies only the input by a constant factor,
  * b(0), in the scalar linear equation to filter output.
  * The input boundary coefficient of a GainFilter is 1 by default because only
  * one input parameter is operated on within the FIRFilter's scalar linear equation.

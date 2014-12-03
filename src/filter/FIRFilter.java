@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * <p>
- * A FIR Filter is a ScalarLinearFilter with one multiplier for output a(0) initialized to zero.
+ * A FIRFilter is a ScalarLinearFilter with one multiplier for output a(0) initialized to zero.
  * This type of filter does not calculate a sum of multiplied output values and has the slope-intercept form.
  * The output boundary coefficient M is thus initialized to zero. All remaining parameters are utilized in construction
  * as if the filter were a ScalarLinearFilter, i.e. the input boundary coefficient and the multiplier list for input
