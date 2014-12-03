@@ -29,10 +29,10 @@ import exception.NullValueException;
  * <p>
  * All scalar filter implementations have restrictions on the elements they may filter. For example,
  * all implementations prohibit null elements and some have restrictions on the types of their elements.
- * Attempting to add an ineligible element throws an unchecked NullValueException.
+ * Attempting to add an ineligible element throws a checked NullValueException.
  * </p>
  * <p>
- * Unchecked EmptyListException and IncorrectSizeExceptions are thrown when the implementation utilizes
+ * Checked EmptyListException and IncorrectSizeExceptions are thrown when the implementation utilizes
  * a validation from the FilterValidator class. The earlier exception is thrown when the list operated on
  * contains zero elements but should contain at least one element for proper filter operation. The latter exception is thrown when
  * the values operated on are not within the ranges necessary for filter operation.

@@ -22,12 +22,12 @@ import exception.NullValueException;
  * <p>
  * All filter implementations have restrictions on the elements they may filter. For example,
  * all implementations prohibit null elements and some have restrictions on the types of their elements.
- * Attempting to add an ineligible element throws either an unchecked NullValueException or a checked
- * ClassCastException. When a ClassCastException is checked, the filter will print a
+ * Attempting to add an ineligible element throws either a checked NullValueException or unchecked ClassCastException.
+ * When a ClassCastException is thrown, the exception is caught and the filter will print a
  * message to the standard error output as well as produce a null value.
  * </p>
  * <p>
- * Unchecked EmptyListException and IncorrectSizeExceptions are thrown when the implementation utilizes
+ * Checked EmptyListException and IncorrectSizeExceptions are thrown when the implementation utilizes
  * a validation from the FilterValidator class. The earlier exception is thrown when the list operated on
  * contains zero elements but should contain at least one element for proper filter operation. The latter exception is thrown when
  * the values operated on are not within the ranges necessary for filter operation.

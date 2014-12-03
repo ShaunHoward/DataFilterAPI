@@ -19,7 +19,7 @@ import exception.NullValueException;
  * <p>
  * All resettable implementations have restrictions on the elements they may accept to reset
  * the implementing filter. For example, all implementations prohibit null elements and may have type restrictions
- * on their elements, as previously discussed. Attempting to add an ineligible elements throws an unchecked
+ * on their elements, as previously discussed. Attempting to add an ineligible elements throws a checked
  * NullValueException.
  * </p>
  *
