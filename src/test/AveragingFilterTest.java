@@ -3,7 +3,6 @@ package test;
 import exception.NullValueException;
 import org.junit.Test;
 import org.junit.Before;
-import org.junit.After;
 import filter.AveragingFilter;
 
 import static org.junit.Assert.assertEquals;

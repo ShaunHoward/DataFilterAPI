@@ -13,9 +13,6 @@ import exception.NullValueException;
  * The specified input value must not be null or a checked NullValueException will be thrown.
  * </p>
  * <p>
- * All other operations of IdentityFilter are the same as Filter, and it should behave like a Filter.
- * </p>
- * <p>
  * This class only supports types A and B where B is a subclass of A. If type B is not a subclass of type A,
  * an unchecked ClassCastException will be thrown and caught within the filter method, printing a message
  * to the standard error stream.

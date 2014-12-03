@@ -3,8 +3,7 @@ package test;
 import exception.NullValueException;
 import filter.MinFilter;
 import org.junit.Test; 
-import org.junit.Before; 
-import org.junit.After;
+import org.junit.Before;
 
 import java.util.Vector;
 

@@ -5,8 +5,7 @@ import exception.IncorrectSizeException;
 import exception.NullValueException;
 import filter.MinFilterN;
 import org.junit.Test; 
-import org.junit.Before; 
-import org.junit.After;
+import org.junit.Before;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -32,10 +31,6 @@ public class MinFilterNTest {
         minFilterNegativeBoundary = new MinFilterN(MIN_SIZE);
         minFilterAtBoundary = new MinFilterN(BOUND);
         minFilterPositiveBoundary = new MinFilterN(LARGE_SIZE);
-    }
-
-    @After
-    public void after() throws Exception {
     }
 
     /**

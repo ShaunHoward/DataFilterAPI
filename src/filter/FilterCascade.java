@@ -13,9 +13,14 @@ import java.util.List;
  * </p>
  * <p>
  * FilterCascade is constructed with a list of Filters of type A, which must implement comparable, and type B. Filters in the
- * filter cascade can only be reset individually but not as a whole. The filter method runs the specified input value
- * through the filters in the order they are indexed (from 0 to length) within the filter list. If the list of filters
- * specified during construction is empty, the input value will be returned as type B.
+ * filter cascade can only be reset individually but not as a whole.
+ * </p>
+ * <p>
+ * The filter method of Filter is overridden to filter values through the cascade list of filters.The filter method runs
+ * the specified input value through the filters in the order they are indexed (from 0 to length) within the filter list.
+ * If the list of filters specified during construction is empty, the input value will be returned as type B. In this
+ * implementation, specific values are accepted. The specified input value must not be null or a checked NullValueException
+ * will be thrown.
  * </p>
  * <p>
  * This class only supports types A and B where B is a subclass of A. If type B is not a subclass of type A,

@@ -1,10 +1,8 @@
 package test;
 
-import filter.FIRFilter;
 import filter.GainFilter;
 import org.junit.Test; 
 import org.junit.Before; 
-import org.junit.After;
 
 import java.util.ArrayList;
 

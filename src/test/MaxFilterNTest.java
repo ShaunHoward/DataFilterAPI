@@ -5,8 +5,7 @@ import exception.IncorrectSizeException;
 import exception.NullValueException;
 import filter.MaxFilterN;
 import org.junit.Test; 
-import org.junit.Before; 
-import org.junit.After;
+import org.junit.Before;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -32,10 +31,6 @@ public class MaxFilterNTest {
         maxFilterNegativeBoundary = new MaxFilterN(MIN_SIZE);
         maxFilterAtBoundary = new MaxFilterN(BOUND);
         maxFilterPositiveBoundary = new MaxFilterN(LARGE_SIZE);
-    }
-
-    @After
-    public void after() throws Exception {
     }
 
     /**

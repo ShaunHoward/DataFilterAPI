@@ -3,7 +3,6 @@ package test;
 import filter.*;
 import org.junit.Test;
 import org.junit.Before;
-import org.junit.After;
 
 import java.util.ArrayList;
 
