@@ -9,10 +9,42 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * ScalarLinearFilter which is a ScalarFilter that filters input based on a linear
- * equation (y(i) + a(1)y(i-1)+...+a(M)y(i-M) = b(0)x(i)+...+b(N)x(i-N)) which
- * considers the current iteration of input, previous input values and the current
- * input value. The filter can be reset with a given double value.
+ * <p>
+ * A linear implementation of the ScalarFilter interface. Implements all ScalarFilter
+ * operations. This class also implements the Resettable interface with a type of Double.
+ * Implements all Resettable operations. In addition to implementing the ScalarFilter and
+ * Resettable interfaces, this class provides methods to calculate the input and output sums
+ * with the given linear equation: (y(i) + a(1)y(i-1)+...+a(M)y(i-M) = b(0)x(i)+...+b(N)x(i-N)).
+ * This linear equation considers lists of input values specified upon construction, which are where the
+ * 'a' and 'b' indexed values come from in the equation. Boundary coefficients are used to limit the calculations
+ * of the linear equation on both the input (N) and output (M) sum sides of the equation as in the equation above.
+ * </p>
+ * <p>
+ * The sumInput(), sumOutput(), and reset operations run in linear time. The remaining operations
+ * run in constant time.
+ * </p>
+ * <p>
+ * The filter operation calls sumInput() and sumOutput() to calculate the filtered output, y(i) of the current iteration
+ * of the filter call. Each call to filter increments the iteration of the ScalarLinearFilter instance.
+ * The sumInput() operation performs the summation of the following portion of the linear equation: b(0)x(i)+...+b(N)x(i-N)).
+ * The sumOutput() operation performs the summation of the remaining portion of the linear equation: a(1)y(i-1)+...+a(M)y(i-M).
+ * </p>
+ * <p>
+ * Each ScalarLinearFilter instance tracks the current iteration of filter call in order to calculate the value
+ * filtered via the above linear equation. The iteration is represented as 'i' in the equation. The sumInput()
+ * and sumOutput() methods only perform calculations when the current iteration is greater than or equal to either N
+ * or M in order to avoid unnecessary zero-valued additions to the input and output sums.
+ * </p>
+ * <p>
+ * This implementation of Resettable accepts a Double value to reset itself. The resettable method sets the input
+ * sum of the instance to the specified Double value. It sets the output sum of the instance to
+ * r(sum of b(0)-b(N)) / (1 + sum of a(1) - a(M)), where r is the specified reset value.
+ * Calling the reset() operation simply calls reset(Double value) with a Double zero.
+ * </p>
+ * <p>
+ * A ScalarLinearFilter limits the number of calculations per instance based on the input and output boundary coefficient.
+ * The instance must be reset once it's threshold is reached in order to calculate any additional filtered values.
+ * </p>
  *
  * @author Shaun Howard
  */
@@ -46,7 +78,7 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
     private List<Double> y;
 
     /**
-     * Constructs a scalar linear filter with boundary coefficients N and M
+     * Constructs a ScalarLinearFilter with boundary coefficients N and M
      * and lists of multipliers a and b for input and output consecutively.
      *
      * @param M - the output boundary coefficient
@@ -67,16 +99,25 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
     }
 
     /**
-     * Filters the input by calculating the output at
-     * the current iteration given the linear equation
-     * for the scalar linear filter.
+     * <p>
+     * Filters the specified input value by subtracting the sum of the input portion of the equation from the sum of the
+     * output portion of the equation. The sum of the input portion is provided via a call to sumInput() method after the
+     * specified input value is added to the set of input values.
+     * The sum of the output portion is provided via a call to the sumOutput() method.
+     * The output is added to the list of output values after calculation.
+     * Each call to the filter method increments the iteration of this ScalarLinearFilter instance.
+     * </p>
+     * <p>
+     * When the current iteration of filtering is beyond the range of either the input or output list's size, a checked
+     * IncorrectSizeException will be thrown.
+     * </p>
      *
-     * @param in - the input value to calculate the output in
-     *           relation to
+     * @param in - the input value to filter based on the scalar linear equation
      * @return the output value y(i) of the linear equation solution
-     * @throws exception.NullValueException - thrown when the input, a, or b is null
-     * @throws exception.IncorrectSizeException - thrown when i is not in the range of x or y's size
-     * @throws exception.EmptyListException - thrown when a list used for calculation is empty
+     * @throws exception.NullValueException - if null data structure references on operated structures or null input
+     * @throws exception.IncorrectSizeException - if current iteration is beyond the size of both the input and output
+     * list sizes
+     * @throws exception.EmptyListException - if a data structure used for calculation is empty but must not be
      */
     @Override
     public Double filter(Double in) throws NullValueException, IncorrectSizeException, EmptyListException {
@@ -91,7 +132,9 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
     }
 
     /**
-     * Resets the filter with 0.0.
+     * Resets the filter by calling reset(Double value) with a Double zero.
+     * Inherently catches a NullValueException and prints a message to standard error
+     * stream when the called method errors due to a null input value, although this should never happen.
      */
     @Override
     public void reset() {
@@ -103,13 +146,13 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
     }
 
     /**
-     * Calculates the right (input) side of the linear equation.
-     * Sum of b(n) * x(i-n), where n starts at 0 and ends at N
-     * and i is the current iteration of filter input.
+     * Calculates the right (input) side of the scalar linear equation.
+     * This calculation is the sum of input as b(n) * x(i-n), where n starts at 0 and ends at N
+     * and i is the current iteration of filtering.
      *
-     * @return the sum of the input side of the linear equation
-     * @throws exception.EmptyListException - thrown when lists b or x are empty
-     * @throws exception.IncorrectSizeException - thrown when the size of b is not N
+     * @return the sum of the input side of the scalar linear equation
+     * @throws exception.EmptyListException - if value lists b or x are empty
+     * @throws exception.IncorrectSizeException - if the size of value list b is not equal to N
      */
     private double sumInput() throws IncorrectSizeException, EmptyListException {
         FilterValidator.throwExceptionWhenEmpty(b, x);
@@ -133,13 +176,13 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
     /**
      * Calculates the left (output) side of the linear equation without adding the
      * output, y(i), of the current iteration i.
-     * Sum of a(m) * y(i-m), where m starts at 1 and ends at M.
+     * This calculation is the sum of output as a(m) * y(i-m), where m starts at 1 and ends at M
+     * and i is the current iteration of filtering.
      *
-     * @return the left side of the linear equation without the output included
-     * @throws exception.IncorrectSizeException - thrown when the size of a is not M
+     * @return the sum of the output side of the scalar linear equation without the output, y(i), included
+     * @throws exception.IncorrectSizeException - if the size of value list a is not equal to M
      */
     private double sumOutput() throws IncorrectSizeException {
-//        FilterValidator.throwExceptionWhenEmpty(a, y);
         FilterValidator.throwIncorrectSizeException(a, M);
 
         double sum = 0;
@@ -158,14 +201,14 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
     }
 
     /**
-     * Resets the filter with the given value r.
+     * Resets the filter with the specified value r.
      * Sets the record of previous input value to r.
-     * Sets the record of previous output value to
+     * Sets the record of previous output value to the calculation
      * r(sum of b(0)-b(N)) / (1 + sum of a(1) - a(M)).
      *
      * @param r - the value to reset the filter with
-     * @throws exception.NullValueException - thrown when any value used in
-     * resetting filter is null (r, b, a)
+     * @throws exception.NullValueException - if any value used in
+     * resetting filter is null, i.e. input value r, value lists a or b
      */
     @Override
     public void reset(Double r) throws NullValueException {
@@ -185,36 +228,36 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
     }
 
     /**
-     * Gets the input boundary coefficient.
+     * Gets the input boundary coefficient of the scalar linear equation.
      *
-     * @return the input boundary coefficient
+     * @return the input boundary coefficient of the scalar linear equation
      */
     public int getN() {
         return N;
     }
 
     /**
-     * Gets the list of input multipliers.
+     * Gets a list representation of input multipliers for the scalar linear equation.
      *
-     * @return the list of input multipliers
+     * @return a list of input multipliers for the scalar linear equation
      */
     public List<Double> getB() {
         return b;
     }
 
     /**
-     * Gets the input sum.
+     * Gets the filtered input sum calculated on the last iteration of the filter method.
      *
-     * @return the input sum
+     * @return the input sum calculated up until the last filter iteration
      */
     public double getInputSum(){
         return this.inputSum;
     }
 
     /**
-     * Gets the output sum.
+     * Gets the filtered output sum calculated on the last iteration of the filter method.
      *
-     * @return the output sum
+     * @return the output sum calculated up until the last filter iteration
      */
     public double getOutputSum(){
         return this.outputSum;
