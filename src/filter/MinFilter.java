@@ -6,14 +6,14 @@ import exception.NullValueException;
  * <p>
  * A MinFilter is a generic implementation of the Filter interface designed to filter a given input value based on
  * the minimum value seen since either instantiation or the last reset. Implements all Filter operations.This class
- * also implements the Resettable interfaces. Implements all Resettable operations. The user has the ability to obtain
+ * also implements the Resettable interface. Implements all Resettable operations. The user has the ability to obtain
  * the minimum filtered value since either instantiation or the last reset call. The class thus stores the last minimum
  * value filtered.
  * </p>
  * <p>
  * Overrides the filter method by filtering based on the minimum value of type A seen since either class instantiation
  * or the last reset. The filter method calls compareTo to compare the stored minimum filtered value with the specified
- * input value in order to determine which is greater. In this implementation, specific values are accepted.
+ * input value in order to determine which is greater. In this implementation, only specific values are accepted.
  * The specified input value must not be null or a checked NullValueException will be thrown.
  * </p>
  * <p>
