@@ -14,7 +14,7 @@ import java.util.List;
  * operations. This class also implements the Resettable interface with a type of Double.
  * Implements all Resettable operations. In addition to implementing the ScalarFilter and
  * Resettable interfaces, this class provides methods to calculate the input and output sums
- * with the given linear equation: (y(i) + a(1)y(i-1)+...+a(M)y(i-M) = b(0)x(i)+...+b(N)x(i-N)).
+ * with the given linear equation: (y(i) + a(1)y(i - 1) +...+ a(M)y(i - M) = b(0)x(i) +...+ b(N)x(i - N)).
  * This linear equation considers lists of input values specified upon construction, which are where the
  * 'a' and 'b' indexed values come from in the equation. Boundary coefficients are used to limit the calculations
  * of the linear equation on both the input (N) and output (M) sum sides of the equation as in the equation above.
@@ -27,8 +27,8 @@ import java.util.List;
  * <p>
  * The filter operation calls sumInput() and sumOutput() to calculate the filtered output, y(i) of the current iteration
  * of the filter call. Each call to filter increments the iteration of the ScalarLinearFilter instance.
- * The sumInput() operation performs the summation of the following portion of the linear equation: b(0)x(i)+...+b(N)x(i-N)).
- * The sumOutput() operation performs the summation of the remaining portion of the linear equation: a(1)y(i-1)+...+a(M)y(i-M).
+ * The sumInput() operation performs the summation of the following portion of the linear equation: b(0)x(i) +...+ b(N)x(i - N)).
+ * The sumOutput() operation performs the summation of the remaining portion of the linear equation: a(1)y(i - 1) +...+ a(M)y(i - M).
  * </p>
  * <p>
  * Each ScalarLinearFilter instance tracks the current iteration of filter call in order to calculate the value
@@ -39,7 +39,7 @@ import java.util.List;
  * <p>
  * This implementation of Resettable accepts a Double value to reset itself. The resettable method sets the input
  * sum of the instance to the specified Double value. It sets the output sum of the instance to
- * r(sum of b(0)-b(N)) / (1 + sum of a(1) - a(M)), where r is the specified reset value.
+ * r(sum of b(0) - b(N)) / (1 + sum of a(1) - a(M)), where r is the specified reset value.
  * Calling the reset() operation simply calls reset(Double value) with a Double zero.
  * </p>
  * <p>
@@ -148,7 +148,7 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
 
     /**
      * Calculates the right (input) side of the scalar linear equation.
-     * This calculation is the sum of input as b(n) * x(i-n), where n starts at 0 and ends at N
+     * This calculation is the sum of input as b(n) * x(i - n), where n starts at 0 and ends at N
      * and i is the current iteration of filtering.
      *
      * @return the sum of the input side of the scalar linear equation
@@ -177,7 +177,7 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
     /**
      * Calculates the left (output) side of the linear equation without adding the
      * output, y(i), of the current iteration i.
-     * This calculation is the sum of output as a(m) * y(i-m), where m starts at 1 and ends at M
+     * This calculation is the sum of output as a(m) * y(i - m), where m starts at 1 and ends at M
      * and i is the current iteration of filtering.
      *
      * @return the sum of the output side of the scalar linear equation without the output, y(i), included
@@ -205,7 +205,7 @@ public class ScalarLinearFilter implements ScalarFilter, Resettable<Double> {
      * Resets the filter with the specified value r.
      * Sets the record of previous input value to r.
      * Sets the record of previous output value to the calculation
-     * r(sum of b(0)-b(N)) / (1 + sum of a(1) - a(M)).
+     * r(sum of b(0) - b(N)) / (1 + sum of a(1) - a(M)).
      *
      * @param r - the value to reset the filter with
      * @throws exception.NullValueException - if any value used in
